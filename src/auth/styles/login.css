@@ -15,7 +15,7 @@
   background-color: #1a1c2e;
   column-gap: 30px;
 }
-.form {
+.form-custom {
   position: absolute;
   max-width: 430px;
   width: 100%;
@@ -44,7 +44,7 @@ header {
 form {
   margin-top: 30px;
 }
-.form .field {
+.form-custom .field {
   position: relative;
   height: 50px;
   width: 100%;

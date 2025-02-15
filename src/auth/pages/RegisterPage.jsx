@@ -1,54 +1,51 @@
-import { Link, useNavigate } from "react-router";
-
+import { Link } from "react-router";
 import "../styles/login.css";
+import { isValidEmail, onShowHide, validSizeText } from "../helpers";
 import { useForm } from "../../admin/hooks";
-import { onShowHide } from "../helpers/onShowHide";
 import { useEffect, useState } from "react";
-import { isValidEmail, validSizeText } from "../helpers";
 
 onShowHide();
 
-export const LoginPage = () => {
-  const { formState, onInputChange, email, password } = useForm({
+export const RegisterPage = () => {
+  const { formState, onInputChange, email, password, repassword } = useForm({
     email: "",
     password: "",
+    repassword: "",
   });
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPwdValid, setIsPwdValid] = useState(false);
+  const [isRePwdValid, setIsRePwdValid] = useState(false);
 
   useEffect(() => {
     setIsEmailValid(isValidEmail(email));
   }, [email]);
 
-  useEffect(() => {    
+  useEffect(() => {
     setIsPwdValid(validSizeText(password, 0));
   }, [password]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    setIsRePwdValid( password === repassword && validSizeText(repassword, 0));
+  }, [repassword]);
 
-  const onLogin = () => {
+  const onRegister = () => {
     console.log(formState);
-
-    localStorage.setItem("authToken", true);
-
-    //setTimeout(() => navigate("/dashboard", { replace: true }), 250);
   };
 
   return (
     <>
       <section className="container-form forms">
-        <div className="form-custom login">
+        <div className="form-custom signup">
           <div className="form-content">
-            <header>Mi Granja App</header>
-            <form action="#">
+            <header>Registro</header>
+            <form autoComplete="off">
               <div className="field input-field">
                 <input
                   type="email"
                   name="email"
-                  value={email}
+                  placeholder="Correo electronico"
                   onChange={onInputChange}
-                  placeholder="Email"
                   className="input"
                 />
               </div>
@@ -56,8 +53,16 @@ export const LoginPage = () => {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Password"
-                  value={password}
+                  placeholder="Contraseña"
+                  onChange={onInputChange}
+                  className="password"
+                />
+              </div>
+              <div className="field input-field">
+                <input
+                  type="password"
+                  name="repassword"
+                  placeholder="Confirmar contraseña"
                   onChange={onInputChange}
                   className="password"
                 />
@@ -65,14 +70,13 @@ export const LoginPage = () => {
                   onClick={onShowHide}
                   className="fa fa-eye-slash eye-icon"></i>
               </div>
-              <div className="form-link">
-                <a href="#" className="forgot-pass">
-                  ¿Ha olvidado su contraseña?
-                </a>
-              </div>
               <div className="field button-field">
-                <button type="button" className="btn btn-primary" onClick={onLogin} disabled={ (!isEmailValid || !isPwdValid) }>
-                  Ingresar
+                <button
+                  type="button"
+                  disabled={ (!isEmailValid || !isPwdValid || !isRePwdValid) }
+                  onClick={onRegister}
+                  className="btn btn-primary">
+                  Registrarse
                 </button>
               </div>
             </form>
@@ -81,8 +85,10 @@ export const LoginPage = () => {
           <div className="media-options">
             <div className="form-link">
               <span>
-                ¿No tienes una cuenta?
-                <Link className="link signup-link" to="/register">Registrarse</Link>
+                ¿Ya tienes una cuenta?{" "}
+                <Link className="link login-link" to="/login">
+                  Ingresar
+                </Link>
               </span>
             </div>
           </div>
