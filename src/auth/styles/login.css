@@ -68,6 +68,11 @@ form {
 .field input:focus {
   border-bottom-width: 2px;
 }
+.field .input-error {
+  outline: none;
+  padding: 0 15px;
+  border: 1px solid #fa6068;
+}
 .eye-icon {
   position: absolute;
   top: 50%;

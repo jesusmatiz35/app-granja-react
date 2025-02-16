@@ -3,6 +3,7 @@ import "../styles/login.css";
 import { isValidEmail, onShowHide, validSizeText } from "../helpers";
 import { useForm } from "../../admin/hooks";
 import { useEffect, useState } from "react";
+import { FormInput } from "../../ui/components/forms";
 
 onShowHide();
 
@@ -15,7 +16,7 @@ export const RegisterPage = () => {
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPwdValid, setIsPwdValid] = useState(false);
-  const [isRePwdValid, setIsRePwdValid] = useState(false);
+  const [equalPwdRePwd, setEqualPwdRePwd] = useState(true);
 
   useEffect(() => {
     setIsEmailValid(isValidEmail(email));
@@ -23,10 +24,11 @@ export const RegisterPage = () => {
 
   useEffect(() => {
     setIsPwdValid(validSizeText(password, 0));
+    setEqualPwdRePwd(password === repassword);
   }, [password]);
 
   useEffect(() => {
-    setIsRePwdValid( password === repassword && validSizeText(repassword, 0));
+    setEqualPwdRePwd(password === repassword);
   }, [repassword]);
 
   const onRegister = () => {
@@ -40,45 +42,19 @@ export const RegisterPage = () => {
           <div className="form-content">
             <header>Registro</header>
             <form autoComplete="off">
-              <div className="field input-field">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo electronico"
-                  onChange={onInputChange}
-                  className="input"
-                />
-              </div>
-              <div className="field input-field">
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Contraseña"
-                  onChange={onInputChange}
-                  className="password"
-                />
-              </div>
-              <div className="field input-field">
-                <input
-                  type="password"
-                  name="repassword"
-                  placeholder="Confirmar contraseña"
-                  onChange={onInputChange}
-                  className="password"
-                />
-                <i
-                  onClick={onShowHide}
-                  className="fa fa-eye-slash eye-icon"></i>
-              </div>
-              <div className="field button-field">
+              <FormInput placeholder="Correo electronico" errorMessage={ { required: "Campo obligatorio", invalid: "El correo electronico es invalido" } } onValueChange={onInputChange} type="email" name="email" />
+              <FormInput placeholder="Contraseña" min={6} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />
+              <FormInput placeholder="Confirmar contraseña" errorMessage={ { required: "Campo obligatorio", invalid: "La confirmación de la contraseña es invalida" } } onValueChange={onInputChange} type="password" name="repassword" />              
+              { !equalPwdRePwd && <small className='text-danger' style={ { fontSize: '0.9rem', position: 'absolute', display: 'block', marginTop: '-3px', marginLeft: '10px' } }>Las contraseñas no son iguales</small> }
+              <div className="field button-field">              
                 <button
                   type="button"
-                  disabled={ (!isEmailValid || !isPwdValid || !isRePwdValid) }
+                  disabled={!isEmailValid || !isPwdValid || !equalPwdRePwd}
                   onClick={onRegister}
                   className="btn btn-primary">
                   Registrarse
                 </button>
-              </div>
+              </div>              
             </form>
           </div>
           <div className="line"></div>
