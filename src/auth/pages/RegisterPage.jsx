@@ -3,7 +3,7 @@ import "../styles/login.css";
 import { isValidEmail, onShowHide, validSizeText } from "../helpers";
 import { useForm } from "../../admin/hooks";
 import { useEffect, useState } from "react";
-import { FormInput } from "../../ui/components/forms";
+import { FormButton, FormInput } from "../../ui/components/forms";
 
 onShowHide();
 
@@ -23,7 +23,7 @@ export const RegisterPage = () => {
   }, [email]);
 
   useEffect(() => {
-    setIsPwdValid(validSizeText(password, 0));
+    setIsPwdValid(validSizeText(password, 1));
     setEqualPwdRePwd(password === repassword);
   }, [password]);
 
@@ -46,14 +46,13 @@ export const RegisterPage = () => {
               <FormInput placeholder="Contraseña" min={6} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />
               <FormInput placeholder="Confirmar contraseña" errorMessage={ { required: "Campo obligatorio", invalid: "La confirmación de la contraseña es invalida" } } onValueChange={onInputChange} type="password" name="repassword" />              
               { password !== repassword && repassword.length >= password.length && <small className='text-danger' style={ { fontSize: '0.9rem', position: 'absolute', display: 'block', marginTop: '-3px', marginLeft: '10px' } }>Las contraseñas no son iguales</small> }
-              <div className="field button-field">              
-                <button
-                  type="button"
-                  disabled={!isEmailValid || !isPwdValid || !equalPwdRePwd}
-                  onClick={onRegister}
-                  className="btn btn-primary">
-                  Registrarse
-                </button>
+              <div className="field button-field">
+                <FormButton 
+                  label="Registrarse" 
+                  onButtonClick={onRegister} 
+                  className="btn-primary" 
+                  disabled={!isEmailValid || !isPwdValid || !(password === repassword && repassword.length >= password.length)} 
+                  />
               </div>              
             </form>
           </div>

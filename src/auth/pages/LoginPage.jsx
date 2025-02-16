@@ -4,7 +4,7 @@ import "../styles/login.css";
 import { useForm } from "../../admin/hooks";
 import { useEffect, useState } from "react";
 import { isValidEmail, validSizeText } from "../helpers";
-import { FormInput } from "../../ui/components/forms";
+import { FormButton, FormInput } from "../../ui/components/forms";
 
 export const LoginPage = () => {
   const { formState, onInputChange, email, password } = useForm({
@@ -19,7 +19,7 @@ export const LoginPage = () => {
     setIsEmailValid(isValidEmail(email));
   }, [email]);
 
-  useEffect(() => {    
+  useEffect(() => {
     setIsPwdValid(validSizeText(password, 1));
   }, [password]);
 
@@ -40,17 +40,38 @@ export const LoginPage = () => {
           <div className="form-content">
             <header>Mi Granja App</header>
             <form action="#">
-              <FormInput placeholder="Correo electronico" errorMessage={ { required: "Campo obligatorio", invalid: "El correo electronico es invalido" } } onValueChange={onInputChange} type="email" name="email" />
-              <FormInput placeholder="Contraseña" min={1} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />
+              <FormInput
+                placeholder="Correo electronico"
+                errorMessage={{
+                  required: "Campo obligatorio",
+                  invalid: "El correo electronico es invalido",
+                }}
+                onValueChange={onInputChange}
+                type="email"
+                name="email"
+              />
+              <FormInput
+                placeholder="Contraseña"
+                min={1}
+                errorMessage={{
+                  required: "Campo obligatorio",
+                }}
+                onValueChange={onInputChange}
+                type="password"
+                name="password"
+              />
               <div className="form-link">
                 <a href="#" className="forgot-pass">
                   ¿Ha olvidado su contraseña?
                 </a>
               </div>
               <div className="field button-field">
-                <button type="button" className="btn btn-primary" onClick={onLogin} disabled={ (!isEmailValid || !isPwdValid) }>
-                  Ingresar
-                </button>
+                <FormButton
+                  label="Ingresar"
+                  onButtonClick={onLogin}
+                  className="btn-primary"
+                  disabled={ !isEmailValid || !isPwdValid }
+                />
               </div>
             </form>
           </div>
@@ -59,7 +80,9 @@ export const LoginPage = () => {
             <div className="form-link">
               <span>
                 ¿No tienes una cuenta?
-                <Link className="link signup-link" to="/register">Registrarse</Link>
+                <Link className="link signup-link" to="/register">
+                  Registrarse
+                </Link>
               </span>
             </div>
           </div>
