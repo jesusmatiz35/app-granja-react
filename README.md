@@ -1,8 +1,13 @@
-# React + Vite
+# Mi Granja App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada con ReactJS y Vite+JavaScript-SWC.
 
-Currently, two official plugins are available:
+Librerias usadas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [react@19](https://react.dev/reference/react)
+- [bootstrap@5.3.3](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)
+- [fontawesome@6.4.2](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css)
+
+### Author
+Jesús Matiz __(Arquitecto de Software)__
+Contacto: [jesusmatiz35@gmail.com](mailto:jesusmatiz35@gmail.com)
