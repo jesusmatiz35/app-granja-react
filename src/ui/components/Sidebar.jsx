@@ -43,7 +43,7 @@ export const Sidebar = () => {
   return (
     <>
       <div className="d-flex">
-        <nav className="sidebar d-flex flex-column flex-shrink-0 position-fixed">
+        <nav className="sidebar d-flex flex-column flex-shrink-0 position-fixed mt-5">
           <button
             id="toggle-btn"
             className="toggle-btn"
@@ -68,7 +68,7 @@ export const Sidebar = () => {
               </NavLink>
             ))}
           </div>
-          <div className="profile-section p-4">
+          <div className="profile-section p-4 mt-0">
             <div className="d-flex align-items-center">
               <NavLink className="ms-3 profile-info" to="/docs">
                 <i className={`fas fa-file-pdf me-3`}></i>
@@ -79,7 +79,7 @@ export const Sidebar = () => {
         </nav>
 
         {/* Rutas de la administración */}
-        <main className="main-content">
+        <main className="main-content mt-5">
           <div className="container-fluid">
             <Routes>
               <Route path="dashboard" element={<DashboardPage />} />
