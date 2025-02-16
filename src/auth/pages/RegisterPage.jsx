@@ -16,7 +16,7 @@ export const RegisterPage = () => {
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPwdValid, setIsPwdValid] = useState(false);
-  const [equalPwdRePwd, setEqualPwdRePwd] = useState(true);
+  const [equalPwdRePwd, setEqualPwdRePwd] = useState(false);  
 
   useEffect(() => {
     setIsEmailValid(isValidEmail(email));
@@ -45,7 +45,7 @@ export const RegisterPage = () => {
               <FormInput placeholder="Correo electronico" errorMessage={ { required: "Campo obligatorio", invalid: "El correo electronico es invalido" } } onValueChange={onInputChange} type="email" name="email" />
               <FormInput placeholder="Contraseña" min={6} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />
               <FormInput placeholder="Confirmar contraseña" errorMessage={ { required: "Campo obligatorio", invalid: "La confirmación de la contraseña es invalida" } } onValueChange={onInputChange} type="password" name="repassword" />              
-              { !equalPwdRePwd && <small className='text-danger' style={ { fontSize: '0.9rem', position: 'absolute', display: 'block', marginTop: '-3px', marginLeft: '10px' } }>Las contraseñas no son iguales</small> }
+              { password !== repassword && repassword.length >= password.length && <small className='text-danger' style={ { fontSize: '0.9rem', position: 'absolute', display: 'block', marginTop: '-3px', marginLeft: '10px' } }>Las contraseñas no son iguales</small> }
               <div className="field button-field">              
                 <button
                   type="button"
