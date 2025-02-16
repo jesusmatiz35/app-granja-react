@@ -2,11 +2,9 @@ import { Link, useNavigate } from "react-router";
 
 import "../styles/login.css";
 import { useForm } from "../../admin/hooks";
-import { onShowHide } from "../helpers/onShowHide";
 import { useEffect, useState } from "react";
 import { isValidEmail, validSizeText } from "../helpers";
-
-onShowHide();
+import { FormInput } from "../../ui/components/forms";
 
 export const LoginPage = () => {
   const { formState, onInputChange, email, password } = useForm({
@@ -22,7 +20,7 @@ export const LoginPage = () => {
   }, [email]);
 
   useEffect(() => {    
-    setIsPwdValid(validSizeText(password, 0));
+    setIsPwdValid(validSizeText(password, 1));
   }, [password]);
 
   const navigate = useNavigate();
@@ -42,29 +40,8 @@ export const LoginPage = () => {
           <div className="form-content">
             <header>Mi Granja App</header>
             <form action="#">
-              <div className="field input-field">
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={onInputChange}
-                  placeholder="Email"
-                  className="input"
-                />
-              </div>
-              <div className="field input-field">
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={onInputChange}
-                  className="password"
-                />
-                <i
-                  onClick={onShowHide}
-                  className="fa fa-eye-slash eye-icon"></i>
-              </div>
+              <FormInput placeholder="Correo electronico" errorMessage={ { required: "Campo obligatorio", invalid: "El correo electronico es invalido" } } onValueChange={onInputChange} type="email" name="email" />
+              <FormInput placeholder="Contraseña" min={1} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />
               <div className="form-link">
                 <a href="#" className="forgot-pass">
                   ¿Ha olvidado su contraseña?

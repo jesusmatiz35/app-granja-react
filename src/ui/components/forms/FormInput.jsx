@@ -65,7 +65,7 @@ export const FormInput = ({
           onValueChange(event);
         }}
         onBlur={onValidatedInput}
-        className="form-control"
+        className="form-control mt-4"
       />      
     </div>
   );
