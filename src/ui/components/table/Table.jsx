@@ -7,7 +7,7 @@ export const Table = ({
   columns = [{ column }],
   pageSize = 10,
   data = [{}],
-  itemSize = 10,
+  totalItems = 10,
 }) => {
   const tableId = useId();
 
@@ -44,7 +44,7 @@ export const Table = ({
 
   return (
     <>
-      <div className="table-responsive">
+      <div className="table-responsive card p-2">
         <div className="d-flex justify-content-between align-items-center mb-2">
           {caption.length > 0 && (
             <span className="caption-top mb-0">
@@ -61,7 +61,7 @@ export const Table = ({
               value={changePageSize}
               name="show-pages"
               className="form-select form-select-sm"
-              style={{ width: "80px" }}>
+              style={{ width: "65px" }}>
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
@@ -91,7 +91,7 @@ export const Table = ({
           </tbody>
         </table>
         <Pagination
-          items={itemSize}
+          items={totalItems}
           page={selectPage}
           pageSize={changePageSize}
           onPageChange={changePage}

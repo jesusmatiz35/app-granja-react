@@ -38,15 +38,14 @@ export const Pagination = ({
         </small>
         <ul className="pagination justify-content-center pagination-sm">
           <li className={`page-item ${page === 0 ? "disabled" : ""}`}>
-            <a
+            <Link
               className="page-link"
-              href="#"
               onClick={(e) => {
                 e.preventDefault();
                 onPageChange(0);
               }}>
               {"<<"}
-            </a>
+            </Link>
           </li>
           <li className={`page-item ${page === 0 ? "disabled" : ""}`}>
             <Link
