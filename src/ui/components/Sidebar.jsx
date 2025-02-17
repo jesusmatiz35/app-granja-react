@@ -42,16 +42,16 @@ export const Sidebar = () => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="d-flex" style={ {zIndex: '10000'} }>
         <nav className="sidebar d-flex flex-column flex-shrink-0 position-fixed mt-5">
           <button
             id="toggle-btn"
-            className="toggle-btn"
+            className="toggle-btn"            
             onClick={toggleSidebar}>
             <i className="fas fa-chevron-left"></i>
           </button>
 
-          <div className="p-4"></div>
+          <div className="p-3"></div>
 
           <div className="nav flex-column">
             {menu.map((item) => (

@@ -30,7 +30,7 @@ export const LoginPage = () => {
 
     localStorage.setItem("authToken", true);
 
-    //setTimeout(() => navigate("/dashboard", { replace: true }), 250);
+    setTimeout(() => navigate("/dashboard", { replace: true }), 250);
   };
 
   return (

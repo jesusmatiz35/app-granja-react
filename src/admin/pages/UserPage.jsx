@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
 import { useFetch } from "../hooks";
+import { ButtonFlag, SearchFilterUser } from "../components";
 
 const headers = [
   { title: "#" },
@@ -51,10 +52,20 @@ export const UserPage = () => {
     }
   }, [isLoading]);
 
+  const searchInfo = (data) => {
+    console.log(data);
+  }
+
+  const createUser = () => {
+    console.log("createUser");
+  }
+
   return (
     <>
       <Breadcrumb breadCrumb="Usuarios" />
       {/* Contenido de la página */}
+      <ButtonFlag onClickBtn={createUser} icon="fa-user-plus" />
+      <SearchFilterUser onDataSearch={searchInfo} />
       {/* Se muestra mensaje de error en caso de existir */}
       {hasError && <small className="text-danger">{error.message}</small>}
       {/* Se muestra loading mientras se cargan los datos */}

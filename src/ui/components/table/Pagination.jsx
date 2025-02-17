@@ -13,7 +13,9 @@ export const Pagination = ({
     const items = [];
     for (let i = 0; i < pages; i++) {
       items.push(
-        <li key={`li-${i}`} className={`page-item ${page === i ? "active" : ""}`}>
+        <li
+          key={`li-${i}`}
+          className={`page-item ${page === i ? "active" : ""}`}>
           <Link
             className="page-link"
             onClick={(e) => {
@@ -33,7 +35,7 @@ export const Pagination = ({
       <nav aria-label="Page navigation example">
         <small
           className="text-primary"
-          style={{ position: "absolute", opacity: "0.6" }}>
+          style={{ position: "fixed", opacity: "0.6", fontSize: '0.7rem' }}>
           Registros: {Math.min(pageSize * (page + 1), items)} de {items}
         </small>
         <ul className="pagination justify-content-center pagination-sm">
@@ -58,7 +60,7 @@ export const Pagination = ({
             </Link>
           </li>
           {pageItems}
-          <li className={`page-item ${page === (pages - 1) ? "disabled" : ""}`}>
+          <li className={`page-item ${page === pages - 1 ? "disabled" : ""}`}>
             <Link
               className="page-link"
               onClick={(e) => {
@@ -68,7 +70,7 @@ export const Pagination = ({
               {">"}
             </Link>
           </li>
-          <li className={`page-item ${page === (pages - 1) ? "disabled" : ""}`}>
+          <li className={`page-item ${page === pages - 1 ? "disabled" : ""}`}>
             <Link
               className="page-link"
               onClick={(e) => {

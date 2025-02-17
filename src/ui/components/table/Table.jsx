@@ -44,7 +44,7 @@ export const Table = ({
 
   return (
     <>
-      <div className="table-responsive card p-2">
+      <div className="table-responsive shadow-sm card p-2">
         <div className="d-flex justify-content-between align-items-center mb-2">
           {caption.length > 0 && (
             <span className="caption-top mb-0">
