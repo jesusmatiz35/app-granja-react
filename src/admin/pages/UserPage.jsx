@@ -27,7 +27,7 @@ export const UserPage = () => {
     { column: "action" },
   ];
 
-  const { data, isLoading, hasError } = useFetch("/public/data/users.json");
+  const { data, isLoading, hasError, error } = useFetch("/data/users.json");
 
   const [json, setJson] = useState([]);  
   
@@ -49,11 +49,18 @@ export const UserPage = () => {
     <>
       <Breadcrumb breadCrumb="Usuarios" />
       {/* Contenido de la página */}
+      {/* Se muestra mensaje de error en caso de existir */}
+      { hasError && <small className="text-danger">{ error.message }</small> }
+      {/* Se muestra loading mientras se cargan los datos */}
+      { isLoading && <small className="text-dark">Cargando...</small> }
+      {/* Se carga datos de la tabla */}
       { !isLoading && <Table
         caption="Lista de usuarios"
         headers={headers}
         columns={columns}
+        pageSize={10}
         data={json}
+        itemSize={json.length}
       /> }
     </>
   );

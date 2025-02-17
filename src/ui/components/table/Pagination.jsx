@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { Link } from "react-router";
 
-export const Pagination = ({ items = 0, page = 0, pageSize = 10 }) => {
-  const pages = items / pageSize;
+export const Pagination = ({
+  items = 0,
+  page = 0,
+  pageSize = 10,
+  onPageChange,
+}) => {
+  const pages = Math.ceil(items / pageSize);
 
-  const [show, setShow] = useState([]);
-
-  useEffect(() => {
+  const pageItems = useMemo(() => {
+    const items = [];
     for (let i = 0; i < pages; i++) {
-      setShow([
-        ...show,
-        <li key={`li-${i}`} className={`page-item ${ page === 0 ? 'active' : ''}`}>
-          <a className="page-link" href="#">
+      items.push(
+        <li key={`li-${i}`} className={`page-item ${page === i ? "active" : ""}`}>
+          <Link
+            className="page-link"
+            onClick={(e) => {
+              e.preventDefault();
+              onPageChange(i);
+            }}>
             {i + 1}
-          </a>
-        </li>,
-      ]);
+          </Link>
+        </li>
+      );
     }
-  }, [items, pageSize]);
+    return items;
+  }, [pages, page, onPageChange]);
 
   return (
     <>
@@ -24,29 +34,50 @@ export const Pagination = ({ items = 0, page = 0, pageSize = 10 }) => {
         <small
           className="text-primary"
           style={{ position: "absolute", opacity: "0.6" }}>
-          Registros: {pageSize * (page + 1)} de {items}
+          Registros: {Math.min(pageSize * (page + 1), items)} de {items}
         </small>
         <ul className="pagination justify-content-center pagination-sm">
-          <li className="page-item disabled">
-            <a className="page-link" href="#">
+          <li className={`page-item ${page === 0 ? "disabled" : ""}`}>
+            <a
+              className="page-link"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(0);
+              }}>
               {"<<"}
             </a>
           </li>
-          <li className="page-item disabled">
-            <a className="page-link" href="#">
+          <li className={`page-item ${page === 0 ? "disabled" : ""}`}>
+            <Link
+              className="page-link"
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(page - 1);
+              }}>
               {"<"}
-            </a>
+            </Link>
           </li>
-          { show.map( (p) => (p) ) }          
-          <li className="page-item">
-            <a className="page-link" href="#">
+          {pageItems}
+          <li className={`page-item ${page === (pages - 1) ? "disabled" : ""}`}>
+            <Link
+              className="page-link"
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(page + 1);
+              }}>
               {">"}
-            </a>
+            </Link>
           </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
+          <li className={`page-item ${page === (pages - 1) ? "disabled" : ""}`}>
+            <Link
+              className="page-link"
+              onClick={(e) => {
+                e.preventDefault();
+                onPageChange(pages - 1);
+              }}>
               {">>"}
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
