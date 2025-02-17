@@ -1,6 +1,6 @@
 # Mi Granja App
 
-Aplicación desarrollada con ReactJS y Vite+JavaScript-SWC.
+Plantilla desarrollada con ReactJS y Vite+JavaScript-SWC.
 
 Librerias usadas:
 
@@ -8,6 +8,6 @@ Librerias usadas:
 - [bootstrap@5.3.3](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)
 - [fontawesome@6.4.2](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css)
 
-### Author
-Jesús Matiz __(Arquitecto de Software)__
-Contacto: [jesusmatiz35@gmail.com](mailto:jesusmatiz35@gmail.com)
+#### Autor
+_**Jesús Matiz**<sup>*(Arquitecto de Software)*</sup>_
+_**Contacto:** [jesusmatiz35@gmail.com](mailto:jesusmatiz35@gmail.com)_
