@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
+import { useFetch } from "../hooks";
 
-export const UserPage = () => {  
-
+export const UserPage = () => {
   const onView = (obj) => {
     console.log(obj);
-  }
+  };
 
   const headers = [
     { title: "#" },
@@ -23,56 +23,38 @@ export const UserPage = () => {
     { column: "lastname" },
     { column: "email" },
     { column: "phone" },
-    { column: "createdAt" },
+    { column: "created_at" },
     { column: "action" },
   ];
-  const data = [
-    {
-      id: "1",
-      name: "John",
-      lastname: "Doe",
-      email: "john.doe@correo.com",
-      phone: "555-5555",
-      createdAt: "2025-02-16",
-    },
-    {
-      id: "2",
-      name: "John",
-      lastname: "Doe",
-      email: "john.doe@correo.com",
-      phone: "555-5555",
-      createdAt: "2025-02-16",
-    },
-    {
-      id: "3",
-      name: "John",
-      lastname: "Doe",
-      email: "john.doe@correo.com",
-      phone: "555-5555",
-      createdAt: "2025-02-16",
-    },
-    {
-      id: "4",
-      name: "John",
-      lastname: "Doe",
-      email: "john.doe@correo.com",
-      phone: "555-5555",
-      createdAt: "2025-02-16",
-    },
-  ];
 
-  const [json] = useState(data);
+  const { data, isLoading, hasError } = useFetch("/public/data/users.json");
 
-  const newJson = json.map( (dato) => ({
-    ...dato,
-    action: <i onClick={ () => onView(dato)} className="fa fa-eye text-primary"></i>
-  }));
+  const [json, setJson] = useState([]);  
+  
+  useEffect(() => {
+    
+    if (!isLoading) {
+
+      const newJson = data.map( (dato) => ({
+        ...dato,
+        action: <><i onClick={ () => onView(dato)} className="fa fa-eye text-primary"></i>{ " " }<i onClick={ () => onView(dato.id)} className="fa fa-trash-can text-danger"></i></>
+      }));
+
+      setJson(newJson);
+    }
+  }, [isLoading]);
+
 
   return (
     <>
       <Breadcrumb breadCrumb="Usuarios" />
       {/* Contenido de la página */}
-      <Table caption="Lista de usuarios" headers={headers} columns={columns} data={newJson} />
+      { !isLoading && <Table
+        caption="Lista de usuarios"
+        headers={headers}
+        columns={columns}
+        data={json}
+      /> }
     </>
   );
 };

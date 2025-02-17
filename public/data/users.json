@@ -1,0 +1,403 @@
+[
+    {
+      "id": "1",
+      "name": "Juan",
+      "lastname": "Pérez",
+      "email": "juan.perez@example.com",
+      "phone": "555-1234",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "2",
+      "name": "Ana",
+      "lastname": "Gómez",
+      "email": "ana.gomez@example.com",
+      "phone": "555-5678",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "3",
+      "name": "Carlos",
+      "lastname": "Martínez",
+      "email": "carlos.martinez@example.com",
+      "phone": "555-8765",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "4",
+      "name": "Laura",
+      "lastname": "Rodríguez",
+      "email": "laura.rodriguez@example.com",
+      "phone": "555-4321",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "5",
+      "name": "Pedro",
+      "lastname": "Fernández",
+      "email": "pedro.fernandez@example.com",
+      "phone": "555-1122",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "6",
+      "name": "Lucía",
+      "lastname": "García",
+      "email": "lucia.garcia@example.com",
+      "phone": "555-3344",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "7",
+      "name": "José",
+      "lastname": "López",
+      "email": "jose.lopez@example.com",
+      "phone": "555-5566",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "8",
+      "name": "Marta",
+      "lastname": "Sánchez",
+      "email": "marta.sanchez@example.com",
+      "phone": "555-7788",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "9",
+      "name": "David",
+      "lastname": "Martín",
+      "email": "david.martin@example.com",
+      "phone": "555-9900",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "10",
+      "name": "Sara",
+      "lastname": "Hernández",
+      "email": "sara.hernandez@example.com",
+      "phone": "555-1235",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "11",
+      "name": "Juan",
+      "lastname": "Ramírez",
+      "email": "juan.ramirez@example.com",
+      "phone": "555-2345",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "12",
+      "name": "Eva",
+      "lastname": "Jiménez",
+      "email": "eva.jimenez@example.com",
+      "phone": "555-3456",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "13",
+      "name": "Raúl",
+      "lastname": "González",
+      "email": "raul.gonzalez@example.com",
+      "phone": "555-4567",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "14",
+      "name": "Beatriz",
+      "lastname": "Hernández",
+      "email": "beatriz.hernandez@example.com",
+      "phone": "555-5678",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "15",
+      "name": "Francisco",
+      "lastname": "Moreno",
+      "email": "francisco.moreno@example.com",
+      "phone": "555-6789",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "16",
+      "name": "Elena",
+      "lastname": "Vázquez",
+      "email": "elena.vazquez@example.com",
+      "phone": "555-7890",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "17",
+      "name": "Luis",
+      "lastname": "Alonso",
+      "email": "luis.alonso@example.com",
+      "phone": "555-8901",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "18",
+      "name": "Sofia",
+      "lastname": "Morales",
+      "email": "sofia.morales@example.com",
+      "phone": "555-9012",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "19",
+      "name": "José Luis",
+      "lastname": "Ruiz",
+      "email": "jose.luis.ruiz@example.com",
+      "phone": "555-0123",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "20",
+      "name": "Patricia",
+      "lastname": "Díaz",
+      "email": "patricia.diaz@example.com",
+      "phone": "555-2346",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "21",
+      "name": "Alberto",
+      "lastname": "Pérez",
+      "email": "alberto.perez@example.com",
+      "phone": "555-3457",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "22",
+      "name": "Inés",
+      "lastname": "Gómez",
+      "email": "ines.gomez@example.com",
+      "phone": "555-4568",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "23",
+      "name": "Carlos",
+      "lastname": "Serrano",
+      "email": "carlos.serrano@example.com",
+      "phone": "555-5679",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "24",
+      "name": "María",
+      "lastname": "Álvarez",
+      "email": "maria.alvarez@example.com",
+      "phone": "555-6780",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "25",
+      "name": "Ricardo",
+      "lastname": "Paredes",
+      "email": "ricardo.paredes@example.com",
+      "phone": "555-7891",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "26",
+      "name": "Teresa",
+      "lastname": "Martín",
+      "email": "teresa.martin@example.com",
+      "phone": "555-8902",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "27",
+      "name": "Javier",
+      "lastname": "González",
+      "email": "javier.gonzalez@example.com",
+      "phone": "555-9013",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "28",
+      "name": "Mónica",
+      "lastname": "López",
+      "email": "monica.lopez@example.com",
+      "phone": "555-0124",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "29",
+      "name": "Fernando",
+      "lastname": "Torres",
+      "email": "fernando.torres@example.com",
+      "phone": "555-2347",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "30",
+      "name": "Raquel",
+      "lastname": "Jiménez",
+      "email": "raquel.jimenez@example.com",
+      "phone": "555-3458",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "31",
+      "name": "Antonio",
+      "lastname": "Hernández",
+      "email": "antonio.hernandez@example.com",
+      "phone": "555-4569",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "32",
+      "name": "Julia",
+      "lastname": "Sánchez",
+      "email": "julia.sanchez@example.com",
+      "phone": "555-5670",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "33",
+      "name": "Sergio",
+      "lastname": "García",
+      "email": "sergio.garcia@example.com",
+      "phone": "555-6781",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "34",
+      "name": "Carmen",
+      "lastname": "Serrano",
+      "email": "carmen.serrano@example.com",
+      "phone": "555-7892",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "35",
+      "name": "Oscar",
+      "lastname": "Ruiz",
+      "email": "oscar.ruiz@example.com",
+      "phone": "555-8903",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "36",
+      "name": "Lucía",
+      "lastname": "Morales",
+      "email": "lucia.morales@example.com",
+      "phone": "555-9014",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "37",
+      "name": "Víctor",
+      "lastname": "Pérez",
+      "email": "victor.perez@example.com",
+      "phone": "555-0125",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "38",
+      "name": "Celia",
+      "lastname": "Rodríguez",
+      "email": "celia.rodriguez@example.com",
+      "phone": "555-2348",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "39",
+      "name": "Luis",
+      "lastname": "Ramírez",
+      "email": "luis.ramirez@example.com",
+      "phone": "555-3459",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "40",
+      "name": "Gloria",
+      "lastname": "Torres",
+      "email": "gloria.torres@example.com",
+      "phone": "555-4560",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "41",
+      "name": "Pedro",
+      "lastname": "Alvarez",
+      "email": "pedro.alvarez@example.com",
+      "phone": "555-5671",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "42",
+      "name": "Ángela",
+      "lastname": "Sánchez",
+      "email": "angela.sanchez@example.com",
+      "phone": "555-6782",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "43",
+      "name": "Antonio",
+      "lastname": "González",
+      "email": "antonio.gonzalez@example.com",
+      "phone": "555-7893",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "44",
+      "name": "María",
+      "lastname": "López",
+      "email": "maria.lopez@example.com",
+      "phone": "555-8904",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "45",
+      "name": "Jorge",
+      "lastname": "Moreno",
+      "email": "jorge.moreno@example.com",
+      "phone": "555-9015",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "46",
+      "name": "Cristina",
+      "lastname": "Serrano",
+      "email": "cristina.serrano@example.com",
+      "phone": "555-0126",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "47",
+      "name": "Manuel",
+      "lastname": "Torres",
+      "email": "manuel.torres@example.com",
+      "phone": "555-2349",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "48",
+      "name": "Paula",
+      "lastname": "Sánchez",
+      "email": "paula.sanchez@example.com",
+      "phone": "555-3450",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "49",
+      "name": "Luis",
+      "lastname": "Serrano",
+      "email": "luis.serrano@example.com",
+      "phone": "555-4561",
+      "created_at": "2025-02-16"
+    },
+    {
+      "id": "50",
+      "name": "Rosa",
+      "lastname": "Vázquez",
+      "email": "rosa.vazquez@example.com",
+      "phone": "555-5672",
+      "created_at": "2025-02-16"
+    }
+  ]
+  

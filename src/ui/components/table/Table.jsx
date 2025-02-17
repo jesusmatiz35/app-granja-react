@@ -35,7 +35,7 @@ export const Table = ({
             })}
           </tbody>
         </table>
-        <Pagination />
+        <Pagination items={data.length} page={0} pageSize={50} />
       </div>
     </>
   );
