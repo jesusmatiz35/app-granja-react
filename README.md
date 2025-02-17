@@ -5,8 +5,8 @@ Plantilla desarrollada con ReactJS y Vite+JavaScript-SWC.
 Librerias usadas:
 
 - [react@19](https://react.dev/reference/react)
-- [bootstrap@5.3.3](https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css)
-- [fontawesome@6.4.2](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css)
+- [bootstrap@5.3.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [fontawesome@6.4.2](https://fontawesome.com/search?q=trash&o=r&ic=free)
 
 #### Autor
 _**Jesús Matiz**<sup>*(Arquitecto de Software)*</sup>_
