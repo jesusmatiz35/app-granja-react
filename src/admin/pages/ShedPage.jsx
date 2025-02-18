@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { useFetch } from "../hooks";
 import { Table } from "../../ui/components/table";
-import { LoadingMessage } from "../components";
+import { LoadingMessage, SearchFilterShed } from "../components";
 
 const headers = [
   { title: "#" },
@@ -63,10 +63,16 @@ export const ShedPage = () => {
       setJson(newJson);
     }
   }, [isLoading]);
+
+  const searchInfo = (data) => {
+    console.log(data);
+  }
+
   return (
     <>
       <Breadcrumb breadCrumb="Galpones" />
       <button type="button" className="btn btn-outline-info text-primary btn-sm m-1">Agregar galpón</button>
+      <SearchFilterShed onDataSearch={searchInfo} />
       {isLoading && <LoadingMessage message="Cargando..." />}
       { !isLoading && <Table
         caption="Galpones"
