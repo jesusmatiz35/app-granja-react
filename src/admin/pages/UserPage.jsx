@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
 import { useFetch } from "../hooks";
-import { ButtonFlag, ModalMain, SearchFilterUser } from "../components";
+import { ButtonFlag, LoadingMessage, ModalMain, SearchFilterUser } from "../components";
 
 const headers = [
   { title: "#" },
@@ -84,14 +84,46 @@ export const UserPage = () => {
       />
       {showModal && (
         <ModalMain modalTitle={modalTitle} onClose={handleCloseModal}>
-          <p>Aqui va el componente hijo</p>
+          <form action="#">
+            <div className="row">
+              <div className="form-group col-6">
+                <label htmlFor="nombre">Nombre</label>
+                <input type="text" id="nombre" className="form-control" />
+                <small id="nombreError" className="form-text text-danger">Este campo es obligatorio.</small>
+              </div>
+              <div className="form-group col-6">
+                <label htmlFor="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" className="form-control" />
+                <small id="apellidoError" className="form-text text-danger">Este campo es obligatorio.</small>
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-12">                
+                <label htmlFor="email">Correo electronico</label>
+                <input type="text" id="email" className="form-control" />
+                <small id="emailError" className="form-text text-danger">Este campo es obligatorio.</small>
+              </div>
+            </div>
+            <div className="row">
+              <div className="form-group col-6">
+                <label htmlFor="pwd">Contraseña</label>
+                <input type="password" id="pwd" className="form-control" />
+                <small id="pwdError" className="form-text text-danger">Este campo es obligatorio.</small>
+              </div>
+              <div className="form-group col-6">
+                <label htmlFor="repwd">Confirma contraseña</label>
+                <input type="password" id="repwd" className="form-control" />
+                <small id="repwdError" className="form-text text-danger">Este campo es obligatorio.</small>
+              </div>
+            </div>
+          </form>
         </ModalMain>
       )}
       <SearchFilterUser onDataSearch={searchInfo} />
       {/* Se muestra mensaje de error en caso de existir */}
       {hasError && <small className="text-danger">{error.message}</small>}
       {/* Se muestra loading mientras se cargan los datos */}
-      {isLoading && <small className="text-dark">Cargando...</small>}
+      {isLoading && <LoadingMessage message="Cargando..." />}
       {/* Se carga datos de la tabla */}
       {!isLoading && (
         <Table
