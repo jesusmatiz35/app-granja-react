@@ -34,8 +34,7 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', chi
       <div
         id="mainModal"
         className="modal"
-        aria-hidden="true"
-        tabIndex={-1}
+        tabIndex={-100}
         style={{ display: 'block' }}>
         <div className={`modal-dialog modal-dialog-centered modal-dialog-scrollable ${modalSize}`}>
           <div className="modal-content">
@@ -48,7 +47,7 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', chi
                 className="btn-close"
                 onClick={() => onClose(false)}></button>
             </div>
-            <div className="modal-body">{ children }</div>
+            <div className="modal-body" style={{ marginTop: '-25px' }}>{ children }</div>
             <div className="modal-footer">
               <button
                 type="button"
