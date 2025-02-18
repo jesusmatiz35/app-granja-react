@@ -3,10 +3,7 @@ import { useForm } from "../hooks";
 
 export const SearchFilterUser = ({ onDataSearch }) => {
 
-  const { formState, onInputChange, setFormState, email, date_star } = useForm({
-    email: '',
-    date_star: ''
-  });
+  const { formState, onInputChange, setFormState, email, date_star } = useForm({});
 
   const [disableBtn, setDisableBtn] = useState(true);
 
@@ -17,10 +14,6 @@ export const SearchFilterUser = ({ onDataSearch }) => {
   useEffect(() => {
     (email?.length > 0 || date_star?.length > 0) ? setDisableBtn(false) :  setDisableBtn(true);
   }, [email, date_star]);
-
-  useEffect(() => {
-    execSearch();
-  }, []);
 
   return (
     <>

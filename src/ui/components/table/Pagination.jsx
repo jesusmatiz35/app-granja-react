@@ -35,7 +35,7 @@ export const Pagination = ({
       <nav aria-label="Page navigation example">
         <small
           className="text-primary"
-          style={{ position: "fixed", opacity: "0.6", fontSize: '0.7rem' }}>
+          style={{ position: "absolute", opacity: "0.6", fontSize: '0.7rem' }}>
           Registros: {Math.min(pageSize * (page + 1), items)} de {items}
         </small>
         <ul className="pagination justify-content-center pagination-sm">

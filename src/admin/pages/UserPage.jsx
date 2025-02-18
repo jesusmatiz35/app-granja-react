@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
 import { useFetch } from "../hooks";
-import { ButtonFlag, SearchFilterUser } from "../components";
+import { ButtonFlag, ModalMain, SearchFilterUser } from "../components";
 
 const headers = [
   { title: "#" },
@@ -24,13 +24,25 @@ const columns = [
 ];
 
 export const UserPage = () => {
-  const onView = (obj) => {
-    console.log(obj);
+  const handleDeleteUser = (id) => {
+    console.log(id);
   };
 
   const { data, isLoading, hasError, error } = useFetch("/data/users.json");
 
   const [json, setJson] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+
+  const handleButtonClick = (isCreate) => {
+    isCreate ? setModalTitle("Crear usuario") : setModalTitle("Editar usuario");
+    setShowModal(true);
+  };
+
+  const handleCloseModal = (result) => {
+    console.log(result);
+    setShowModal(false);
+  };
 
   useEffect(() => {
     if (!isLoading) {
@@ -38,12 +50,18 @@ export const UserPage = () => {
         ...dato,
         action: (
           <>
-            <i
-              onClick={() => onView(dato)}
-              className="fa fa-eye text-primary"></i>{" "}
-            <i
-              onClick={() => onView(dato.id)}
-              className="fa fa-trash-can text-danger"></i>
+            <button
+              type="button"
+              onClick={() => handleButtonClick(false)}
+              className="btn btn-default btn-sm">
+              <i className="fa fa-eye text-primary"></i>
+            </button>{" "}
+            <button
+              type="button"
+              onClick={() => handleDeleteUser(dato.id)}
+              className="btn btn-default btn-sm">
+              <i className="fa fa-trash-can text-danger"></i>
+            </button>
           </>
         ),
       }));
@@ -54,17 +72,21 @@ export const UserPage = () => {
 
   const searchInfo = (data) => {
     console.log(data);
-  }
-
-  const createUser = () => {
-    console.log("createUser");
-  }
+  };
 
   return (
     <>
       <Breadcrumb breadCrumb="Usuarios" />
       {/* Contenido de la página */}
-      <ButtonFlag onClickBtn={createUser} icon="fa-user-plus" />
+      <ButtonFlag
+        onClickBtn={() => handleButtonClick(true)}
+        icon="fa-user-plus"
+      />
+      {showModal && (
+        <ModalMain modalTitle={modalTitle} onClose={handleCloseModal}>
+          <p>Aqui va el componente hijo</p>
+        </ModalMain>
+      )}
       <SearchFilterUser onDataSearch={searchInfo} />
       {/* Se muestra mensaje de error en caso de existir */}
       {hasError && <small className="text-danger">{error.message}</small>}
