@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "shedname": "Galpón A",
+      "type_shed": "Producción de huevos",
+      "genetic_line": "Isa White",
+      "weeks_of_life": 37,
+      "amount": 1500,
+      "birth": "2024-05-10"
+    },
+    {
+      "id": 2,
+      "shedname": "Galpón B",
+      "type_shed": "Producción de Huevos",
+      "genetic_line": "Lohman Brown",
+      "weeks_of_life": 48,
+      "amount": 1200,
+      "birth": "2024-06-15"
+    },
+    {
+      "id": 3,
+      "shedname": "Galpón C",
+      "type_shed": "Levante",
+      "genetic_line": "Isa White",
+      "weeks_of_life": 12,
+      "amount": 800,
+      "birth": "2024-04-22"
+    },
+    {
+      "id": 4,
+      "shedname": "Galpón D",
+      "type_shed": "Producción de huevos",
+      "genetic_line": "HyLine Brown",
+      "weeks_of_life": 67,
+      "amount": 1800,
+      "birth": "2024-07-30"
+    },
+    {
+      "id": 5,
+      "shedname": "Galpón E",
+      "type_shed": "Reproductores",
+      "genetic_line": "Isa Brown",
+      "weeks_of_life": 48,
+      "amount": 2000,
+      "birth": "2024-03-11"
+    }
+  ]
+  
