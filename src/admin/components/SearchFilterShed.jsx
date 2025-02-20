@@ -34,6 +34,7 @@ export const SearchFilterShed = ({ onDataSearch }) => {
               <SelectInput
                 onSelectChange={onInputChange}
                 label="Galpón"
+                defaultValue={0}
                 options={optionsShed}
               />
               <InputForm
