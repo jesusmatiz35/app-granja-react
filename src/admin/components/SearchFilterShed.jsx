@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "../hooks";
+import { SelectInput } from "./forms/SelectInputForm";
+import { TypesShed } from "../../commons/TypesShed";
+import { ButtonForm, InputForm } from "./forms";
+
+const optionsShed = TypesShed;
 
 export const SearchFilterShed = ({ onDataSearch }) => {
   const { formState, onInputChange, setFormState, shed, date_star, date_end } =
@@ -26,58 +31,41 @@ export const SearchFilterShed = ({ onDataSearch }) => {
         <form action="#">
           <div className="card-body py-0">
             <div className="row g-2">
-              <div className="col-md">
-                <label>Galpón</label>
-                <select
-                  id="shed"
-                  onChange={onInputChange}
-                  name="shed"
-                  placeholder="Search"
-                  className="form-select form-select-sm" style={{ height: '38px' }}>
-                  <option value="">Seleccione una opción</option>
-                  <option value={1}>Producción de huevos</option>
-                  <option value={2}>Reproductores</option>
-                  <option value={3}>Levante</option>
-                </select>
-              </div>
-              <div className="col-md">
-                <label>Fecha inicio</label>
-                <input
-                  type="date"
-                  name="date_star"
-                  id="date-star"
-                  className="form-control"
-                  onChange={onInputChange}
-                />
-                <span id="startDateSelected"></span>
-              </div>
-              <div className="col-md">
-                <label>Fecha fin</label>
-                <input
-                  type="date"
-                  name="date_end"
-                  id="date-end"
-                  className="form-control"
-                  onChange={onInputChange}
-                />
-                <span id="startDateSelected"></span>
-              </div>
+              <SelectInput
+                onSelectChange={onInputChange}
+                label="Galpón"
+                options={optionsShed}
+              />
+              <InputForm
+                type="date"
+                label="Fecha Inicio"
+                name="date_star"
+                onInputChange={onInputChange}
+              />
+              <InputForm
+                type="date"
+                label="Fecha Fin"
+                name="date_end"
+                onInputChange={onInputChange}
+              />
             </div>
             <div className="text-center mt-3 mb-2">
-              <button
+              <ButtonForm
+                label="Filtrar"
                 type="button"
                 disabled={disableBtn}
-                onClick={execSearch}
-                className="btn btn-outline-success btn-sm">
-                <i className="fa fa-solid fa-filter"></i> Filtrar
-              </button>{" "}
-              <button
+                onBtnClick={execSearch}
+                icon="fa-solid fa-filter"
+                className="btn-outline-success btn-sm"
+              />{" "}
+              <ButtonForm
+                label="Limpiar"
                 type="reset"
                 disabled={disableBtn}
-                onClick={() => setFormState({})}
-                className="btn btn-outline-danger btn-sm">
-                <i className="fa fa-solid fa-filter-circle-xmark"></i> Limpiar
-              </button>
+                onBtnClick={() => setFormState({})}
+                icon="fa-solid fa-filter-circle-xmark"
+                className="btn-outline-danger btn-sm"
+              />
             </div>
           </div>
         </form>

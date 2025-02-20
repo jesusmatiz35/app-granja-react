@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
 import { useFetch } from "../hooks";
-import { ButtonFlag, LoadingMessage, ModalMain, SearchFilterUser } from "../components";
+import {
+  ButtonFlag,
+  ButtonForm,
+  InputForm,
+  LoadingMessage,
+  ModalMain,
+  SearchFilterUser,
+} from "../components";
 
 const headers = [
   { title: "#" },
@@ -50,18 +57,16 @@ export const UserPage = () => {
         ...dato,
         action: (
           <>
-            <button
-              type="button"
-              onClick={() => handleButtonClick(false)}
-              className="btn btn-default btn-sm">
-              <i className="fa fa-eye text-primary"></i>
-            </button>{" "}
-            <button
-              type="button"
-              onClick={() => handleDeleteUser(dato.id)}
-              className="btn btn-default btn-sm">
-              <i className="fa fa-trash-can text-danger"></i>
-            </button>
+            <ButtonForm
+              label={<i className="fa fa-eye text-primary"></i>}
+              className="btn-default btn-sm"
+              onBtnClick={() => handleButtonClick(false)}
+            />{" "}
+            <ButtonForm
+              label={<i className="fa fa-trash-can text-danger"></i>}
+              className="btn-default btn-sm"
+              onBtnClick={() => handleDeleteUser(dato.id)}
+            />
           </>
         ),
       }));
@@ -85,36 +90,41 @@ export const UserPage = () => {
       {showModal && (
         <ModalMain modalTitle={modalTitle} onClose={handleCloseModal}>
           <form action="#">
-            <div className="row">
-              <div className="form-group col-6">
-                <label htmlFor="nombre">Nombre</label>
-                <input type="text" id="nombre" className="form-control" />
-                <small id="nombreError" className="form-text text-danger">Este campo es obligatorio.</small>
-              </div>
-              <div className="form-group col-6">
-                <label htmlFor="apellidos">Apellidos</label>
-                <input type="text" id="apellidos" className="form-control" />
-                <small id="apellidoError" className="form-text text-danger">Este campo es obligatorio.</small>
-              </div>
+            <div className="row mb-1">
+              <InputForm
+                label="Nombre"
+                type="text"
+                name="nombre"
+                className="form-group col-6"
+              />
+              <InputForm
+                label="Apellidos"
+                type="text"
+                name="apellidos"
+                className="form-group col-6"
+              />
+            </div>
+            <div className="row mb-1">
+              <InputForm
+                label="Correo electronico"
+                type="email"
+                name="email"
+                className="form-group col-12"
+              />
             </div>
             <div className="row">
-              <div className="form-group col-12">                
-                <label htmlFor="email">Correo electronico</label>
-                <input type="text" id="email" className="form-control" />
-                <small id="emailError" className="form-text text-danger">Este campo es obligatorio.</small>
-              </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-6">
-                <label htmlFor="pwd">Contraseña</label>
-                <input type="password" id="pwd" className="form-control" />
-                <small id="pwdError" className="form-text text-danger">Este campo es obligatorio.</small>
-              </div>
-              <div className="form-group col-6">
-                <label htmlFor="repwd">Confirma contraseña</label>
-                <input type="password" id="repwd" className="form-control" />
-                <small id="repwdError" className="form-text text-danger">Este campo es obligatorio.</small>
-              </div>
+              <InputForm
+                label="Contraseña"
+                type="password"
+                name="pwd"
+                className="form-group col-6"
+              />
+              <InputForm
+                label="Confirmar contraseña"
+                type="password"
+                name="repwd"
+                className="form-group col-6"
+              />
             </div>
           </form>
         </ModalMain>
