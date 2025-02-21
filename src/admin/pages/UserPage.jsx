@@ -5,6 +5,7 @@ import { useFetch } from "../hooks";
 import {
   ButtonFlag,
   ButtonForm,
+  CustomForm,
   InputForm,
   LoadingMessage,
   ModalMain,
@@ -89,12 +90,13 @@ export const UserPage = () => {
       />
       {showModal && (
         <ModalMain modalTitle={modalTitle} onClose={handleCloseModal}>
-          <form action="#">
+          <CustomForm>
             <div className="row mb-1">
               <InputForm
                 label="Nombre"
                 type="text"
                 name="nombre"
+                onInputChange={ () => console.log }
                 className="form-group col-6"
               />
               <InputForm
@@ -109,6 +111,7 @@ export const UserPage = () => {
                 label="Correo electronico"
                 type="email"
                 name="email"
+                onInputChange={ () => console.log }
                 className="form-group col-12"
               />
             </div>
@@ -117,16 +120,18 @@ export const UserPage = () => {
                 label="Contraseña"
                 type="password"
                 name="pwd"
+                onInputChange={ () => console.log }
                 className="form-group col-6"
               />
               <InputForm
                 label="Confirmar contraseña"
                 type="password"
                 name="repwd"
+                onInputChange={ () => console.log }
                 className="form-group col-6"
               />
             </div>
-          </form>
+          </CustomForm>
         </ModalMain>
       )}
       <SearchFilterUser onDataSearch={searchInfo} />
