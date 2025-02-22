@@ -175,16 +175,16 @@ export const AddHarvest = () => {
                   type="button"
                   disabled={disabledButton}
                   onBtnClick={handleAddHarvest}
-                  icon="fa-solid fa-plus"
+                  icon="fa-solid fa-check-double"
                   className="btn-outline-success btn-md"
                 />
-                <small className="text-white"> - </small>
+                <small className="text-white">&ensp;</small>
                 <ButtonForm
                   label=""
                   type="reset"
                   disabled={disabledButton}
                   onBtnClick={handleResetHarvest}
-                  icon="fa-solid fa-minus"
+                  icon="fa-solid fa-delete-left"
                   className="btn-outline-danger btn-md"
                 />
               </div>
