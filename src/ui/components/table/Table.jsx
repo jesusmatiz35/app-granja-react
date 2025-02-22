@@ -8,6 +8,7 @@ export const Table = ({
   pageSize = 10,
   data = [{}],
   totalItems = 10,
+  textAlign = 'text-center',
 }) => {
   const tableId = useId();
 
@@ -72,7 +73,7 @@ export const Table = ({
           <thead className="table-light">
             <tr>
               {headers.map(({ title }, index) => (
-                <th className="text-center" key={`thead-th-${tableId}-${index}`}>{title}</th>
+                <th className={textAlign} key={`thead-th-${tableId}-${index}`}>{title}</th>
               ))}
             </tr>
           </thead>
@@ -81,7 +82,7 @@ export const Table = ({
               return (
                 <tr key={`row-${tableId}-${rowIndex}-tr`}>
                   {columns.map(({ column }, colIndex) => (
-                    <td className="text-center" key={`${tableId}-${rowIndex}-${column}-${colIndex}`}>
+                    <td className={textAlign} key={`${tableId}-${rowIndex}-${column}-${colIndex}`}>
                       {json[column]}
                     </td>
                   ))}
