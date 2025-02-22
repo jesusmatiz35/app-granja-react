@@ -72,7 +72,7 @@ export const Table = ({
           <thead className="table-light">
             <tr>
               {headers.map(({ title }, index) => (
-                <th key={`thead-th-${tableId}-${index}`}>{title}</th>
+                <th className="text-center" key={`thead-th-${tableId}-${index}`}>{title}</th>
               ))}
             </tr>
           </thead>
@@ -81,7 +81,7 @@ export const Table = ({
               return (
                 <tr key={`row-${tableId}-${rowIndex}-tr`}>
                   {columns.map(({ column }, colIndex) => (
-                    <td key={`${tableId}-${rowIndex}-${column}-${colIndex}`}>
+                    <td className="text-center" key={`${tableId}-${rowIndex}-${column}-${colIndex}`}>
                       {json[column]}
                     </td>
                   ))}

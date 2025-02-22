@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../ui/components/Breadcrumb";
 import { Table } from "../../ui/components/table";
 
@@ -64,6 +65,32 @@ const harvest = [
 ];
 
 export const HarvestPage = () => {
+  const [json, setJson] = useState([]);
+
+  useEffect(() => {
+    const newJson = harvest.map((dato) => ({
+      ...dato,
+      action: (
+        <>
+          <button
+            type="button"
+            onClick={() => console.log(dato)}
+            className="btn btn-default btn-sm">
+            <i className="fa fa-eye text-primary"></i>
+          </button>{" "}
+          <button
+            type="button"
+            onClick={() => console.log(dato)}
+            className="btn btn-default btn-sm">
+            <i className="fa fa-trash-can text-danger"></i>
+          </button>
+        </>
+      ),
+    }));
+
+    setJson(newJson);
+  }, []);
+
   return (
     <>
       <Breadcrumb breadCrumb="Recolección" />
@@ -72,8 +99,8 @@ export const HarvestPage = () => {
         headers={headers}
         columns={columns}
         pageSize={10}
-        data={harvest}
-        totalItems={harvest.length}
+        data={json}
+        totalItems={json.length}
       />
     </>
   );
