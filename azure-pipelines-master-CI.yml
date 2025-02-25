@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+- task: NodeTool@0
+  inputs:
+    versionSpec: '22.x'
+  displayName: 'Install NodeJS 22.x'
+- task: CmdLine@2
+  inputs:
+    script: |
+      npm install
+      npm run build
+  displayName: 'Install and Build'
