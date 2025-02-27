@@ -65,7 +65,7 @@ export const AddCost = () => {
                 <label>Galpones</label>
                 <Multiselect
                   options={options}
-                  placeholder="Opciones"
+                  placeholder=""
                   hidePlaceholder={true}
                   selectedValues={options.value}
                   onSelect={onSelect}
