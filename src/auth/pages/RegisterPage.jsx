@@ -40,7 +40,7 @@ export const RegisterPage = () => {
       <section className="container-form forms">
         <div className="form-custom signup">
           <div className="form-content">
-            <header>Registro</header>
+            <header><img src="src/assets/img/granja.png" width="35px" style={ { verticalAlign: 'middle' } } /> <span className="text-warning" style={ { verticalAlign: 'middle' } }>Crear cuenta</span></header>
             <form autoComplete="off">
               <FormInput placeholder="Correo electronico" errorMessage={ { required: "Campo obligatorio", invalid: "El correo electronico es invalido" } } onValueChange={onInputChange} type="email" name="email" />
               <FormInput placeholder="Contraseña" min={6} errorMessage={ { required: "Campo obligatorio", invalid: "La contraseña es invalida" } } onValueChange={onInputChange} type="password" name="password" />

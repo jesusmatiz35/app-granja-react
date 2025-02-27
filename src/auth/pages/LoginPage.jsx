@@ -38,7 +38,7 @@ export const LoginPage = () => {
       <section className="container-form forms">
         <div className="form-custom login">
           <div className="form-content">
-            <header>Mi Granja App</header>
+            <header><img src="src/assets/img/granja.png" width="35px" style={ { verticalAlign: 'middle' } } /> <span className="text-warning" style={ { verticalAlign: 'middle' } }>Iniciar sesión</span></header>
             <form action="#">
               <FormInput
                 placeholder="Correo electronico"
