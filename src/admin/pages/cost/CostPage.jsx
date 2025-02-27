@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
-import { ButtonForm } from "../../components";
+import { ButtonForm, LoadingMessage } from "../../components";
 import { AddCost } from "./AddCost";
 
 const headers = [
@@ -35,11 +35,21 @@ const data = [
 export const CostPage = () => {
   const [json, setJson] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const handleButtonClick = (d) => {
     console.log(d);
   }
 
+  const sleepLoading = async() => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  }
+
   useEffect(() => {
+
+    sleepLoading();
+
     const newJson = data.map((d) => ({
       ...d,
       action: (
@@ -60,14 +70,15 @@ export const CostPage = () => {
     <>
       <Breadcrumb breadCrumb="Costos" />
       <AddCost />
-      <Table
+      {isLoading && <LoadingMessage message="Cargando..." />}
+      {!isLoading && ( <Table
         caption="Costos"
         headers={headers}
         columns={columns}
         pageSize={10}
         data={json}
         totalItems={json.length}
-      />
+      /> ) }
     </>
   );
 };

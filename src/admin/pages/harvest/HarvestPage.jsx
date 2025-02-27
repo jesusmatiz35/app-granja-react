@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
-import { ButtonForm } from "../../components";
+import { ButtonForm, LoadingMessage } from "../../components";
 import { AddHarvest } from "./AddHarvest";
 
 const headers = [
@@ -74,11 +74,21 @@ const harvest = [
 export const HarvestPage = () => {
   const [json, setJson] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  const sleepLoading = async() => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  }
+
   const handleButtonClick = (data, isDelete) => {
     console.log({ data, isDelete});
   }
 
   useEffect(() => {
+
+    sleepLoading();
+    
     const newJson = harvest.map((dato) => ({
       ...dato,
       action: (
@@ -99,14 +109,15 @@ export const HarvestPage = () => {
     <>
       <Breadcrumb breadCrumb="Recolección" />
       <AddHarvest />
-      <Table
+      {isLoading && <LoadingMessage message="Cargando..." />}
+      {!isLoading && (<Table
         caption="Recolección de Huevos"
         headers={headers}
         columns={columns}
         pageSize={10}
         data={json}
         totalItems={json.length}
-      />
+      />)}
     </>
   );
 };
