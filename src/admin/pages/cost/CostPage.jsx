@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
 import { ButtonForm } from "../../components";
+import { AddCost } from "./AddCost";
 
 const headers = [
   { title: "Galpones" },
@@ -58,6 +59,7 @@ export const CostPage = () => {
   return (
     <>
       <Breadcrumb breadCrumb="Costos" />
+      <AddCost />
       <Table
         caption="Costos"
         headers={headers}
