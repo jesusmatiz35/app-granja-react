@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useForm } from "../hooks";
-import { SelectInput } from "./forms/SelectInputForm";
-import { TypesShed } from "../../commons/TypesShed";
-import { ButtonForm, InputForm } from "./forms";
+import { useForm } from "../../hooks";
+import { SelectInput } from "../../components/forms/SelectInputForm";
+import { TypesShed } from "../../../commons/TypesShed";
+import { ButtonForm, InputForm } from "../../components/forms";
 
 const optionsShed = TypesShed;
 

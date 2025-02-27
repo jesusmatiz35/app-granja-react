@@ -4,5 +4,5 @@ export * from './ModalMain';
 export * from './Widget';
 export * from './ChartJs';
 export * from './LoadingMessage';
-export * from './SearchFilterShed';
+export * from '../pages/shed/SearchFilterShed';
 export * from './forms';
