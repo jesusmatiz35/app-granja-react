@@ -9,8 +9,8 @@ import {
   InputForm,
   LoadingMessage,
   ModalMain,
-  SearchFilterUser,
 } from "../../components";
+import { SearchFilterUser } from "./SearchFilterUser";
 
 const headers = [
   { title: "#" },

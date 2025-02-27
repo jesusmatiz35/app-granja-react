@@ -7,11 +7,11 @@ import {
   InputForm,
   LoadingMessage,
   ModalMain,
-  SearchFilterShed,
   SelectInput,
 } from "../../components";
 import { LineGenetic } from "../../../commons/LineGenetic";
 import { TypesShed } from "../../../commons/TypesShed";
+import { SearchFilterShed } from "./SearchFilterShed";
 
 const headers = [
   { title: "#" },
