@@ -10,7 +10,7 @@ body {
 .sidebar {
     width: var(--sidebar-width);
     height: 100vh;
-    background: linear-gradient(135deg, #1a1c2e 0%, #16181f 100%);
+    background: linear-gradient(135deg, #3f6326 0%, #8bc760 100%);
     transition: all 0.3s ease;
     margin-top: 60px !important;
 }
@@ -20,7 +20,7 @@ body {
 }
 
 .sidebar-link {
-    color: #a0a3bd;
+    color: #D7EBD0;
     transition: all 0.2s ease;
     border-radius: 8px;
     margin: 1px 16px;

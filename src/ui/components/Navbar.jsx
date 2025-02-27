@@ -10,7 +10,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm p-2" style={ { backgroundColor: "#191B29", position: 'fixed', width: '100%', marginBottom: '45px', zIndex: '1000' } } >
+    <nav className="navbar navbar-expand-sm p-2" style={ { background: "linear-gradient(135deg, #3f6326 0%,rgb(101, 153, 64) 100%)", position: 'fixed', width: '100%', marginBottom: '45px', zIndex: '1000' } } >
       <Link className="navbar-brand text-warning" to="/dashboard">
         <img src="src/assets/img/granja.png" width="35px" style={ { verticalAlign: 'middle' } } /> <span style={ { verticalAlign: 'middle' } }>Mi Granja App</span>
       </Link>
