@@ -19,7 +19,6 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
   const {
     formState,
     onInputChange,
-    setFormState,
     sheldId,
     sheld,
     categoryC,
@@ -119,7 +118,7 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
         </div>
         <div className="row col-6 mb-1">
           <SelectInput
-            name="sheldId"
+            name="sheld"
             onSelectChange={handleChangeValue}
             label="Galpón"
             defaultValue={sheldId}
