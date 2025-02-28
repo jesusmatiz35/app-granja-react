@@ -40,7 +40,7 @@ export const Sidebar = () => {
     return () => {
       window.removeEventListener("resize", onScreenResize);
     };
-  }, []);
+  }, [screen]);
 
   const toggleSidebar = () => {
     const sidebar = document.querySelector(".sidebar");
