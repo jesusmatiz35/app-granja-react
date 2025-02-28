@@ -92,10 +92,14 @@ export const HarvestPage = () => {
     setIsLoading(false);
   }
 
-  const handleButtonClick = (data, isCreate) => {
-    isCreate ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");  
+  const handleButtonClick = (data) => {
+    (data === null) ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");  
     setModalData(data);
     setShowModal(true);
+  };
+
+  const handleDeleteButton = (data) => {
+    console.log(`Eliminar: ${data.sheldId}`);
   };
 
   const handleCloseModal = (result) => {
@@ -114,12 +118,12 @@ export const HarvestPage = () => {
           <ButtonForm
               label={<i className="fa fa-pencil text-primary"></i>}
               className="btn-default btn-sm"
-              onBtnClick={() => handleButtonClick(data, false)}
+              onBtnClick={() => handleButtonClick(data)}
             />{" "}
           <ButtonForm
             label={<i className="fa fa-trash-can text-danger"></i>}
             className="btn-default btn-sm"
-            onBtnClick={() => handleButtonClick(data, false)}
+            onBtnClick={() => handleDeleteButton(data,)}
           />
         </>
       ),
@@ -137,7 +141,7 @@ export const HarvestPage = () => {
       <Breadcrumb breadCrumb="Recolección" />
       <button
         type="button"
-        onClick={() => handleButtonClick(true)}
+        onClick={() => handleButtonClick(null)}
         className="btn btn-outline-info text-primary btn-sm m-1">
         Agregar recolección
       </button>
