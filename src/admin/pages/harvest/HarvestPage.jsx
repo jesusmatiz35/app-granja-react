@@ -92,7 +92,7 @@ export const HarvestPage = () => {
     setIsLoading(false);
   }
 
-  const handleButtonClick = (data) => {
+  const handleButtonClick = (data = {}) => {
     (data === null) ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");  
     setModalData(data);
     setShowModal(true);
@@ -141,7 +141,7 @@ export const HarvestPage = () => {
       <Breadcrumb breadCrumb="Recolección" />
       <button
         type="button"
-        onClick={() => handleButtonClick(null)}
+        onClick={() => handleButtonClick()}
         className="btn btn-outline-info text-primary btn-sm m-1">
         Agregar recolección
       </button>
