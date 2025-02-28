@@ -3,6 +3,7 @@ import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
 import { ButtonForm, LoadingMessage } from "../../components";
 import { HarvestModal } from "./HarvestModal";
+import { SearchFilterHarvest } from "./SearchFilterHarvest";
 
 const headers = [
   { title: "Galpón" },
@@ -14,7 +15,8 @@ const headers = [
   { title: "Extra" },
   { title: "Rotos" },
   { title: "Total Huevos" },
-  { title: "Fecha de recolección" },
+  { title: "Fecha recolección" },
+  { title: "Fecha registro" },
   { title: "Acción" },
 ];
 
@@ -29,6 +31,7 @@ const columns = [
   { column: "brokenEggs" },
   { column: "totalEggs" },
   { column: "date" },
+  { column: "dateRegister" },
   { column: "action" },
 ];
 
@@ -44,6 +47,7 @@ const harvest = [
     brokenEggs: 10,
     totalEggs: 811,
     date: "2025-02-13",
+    dateRegister: "2025-02-13",
   },
   {
     sheld: "Galpón B",
@@ -56,6 +60,7 @@ const harvest = [
     brokenEggs: 10,
     totalEggs: 811,
     date: "2025-02-13",
+    dateRegister: "2025-02-13",
   },
   {
     sheld: "Galpón C",
@@ -68,6 +73,7 @@ const harvest = [
     brokenEggs: 10,
     totalEggs: 811,
     date: "2025-02-13",
+    dateRegister: "2025-02-13",
   },
 ];
 
@@ -112,6 +118,10 @@ export const HarvestPage = () => {
     setJson(newJson);
   }, []);
 
+  const searchInfo = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Breadcrumb breadCrumb="Recolección" />
@@ -121,6 +131,7 @@ export const HarvestPage = () => {
         className="btn btn-outline-info text-primary btn-sm m-1">
         Agregar recolección
       </button>
+      <SearchFilterHarvest onDataSearch={searchInfo} />
       {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} />)}
       {isLoading && <LoadingMessage message="Cargando..." />}
       {!isLoading && (<Table
