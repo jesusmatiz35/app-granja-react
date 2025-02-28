@@ -35,14 +35,14 @@ const options = {
       display: true,
       title: {
         display: true,
-        text: 'Recolección',
+        text: 'Mes',
       },
     },
     y: {
       display: true,
       title: {
         display: true,
-        text: 'Mes',
+        text: 'Recolección',
       },
     },
   },
