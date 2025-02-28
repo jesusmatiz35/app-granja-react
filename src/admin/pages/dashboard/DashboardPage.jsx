@@ -1,6 +1,52 @@
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  ArcElement,
+  Filler,
+} from 'chart.js';
+import { Bar, Line, Pie } from "react-chartjs-2";
 import { Breadcrumb } from "../../../ui/components/Breadcrumb";
-import { BarChart, LineChart, PieChart } from "../../components";
 import { Widget } from "../../components/Widget";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  scales: {
+    x: {
+      display: true,
+      title: {
+        display: true,
+        text: 'Recolección',
+      },
+    },
+    y: {
+      display: true,
+      title: {
+        display: true,
+        text: 'Mes',
+      },
+    },
+  },
+}
 
 const dataLine = {
   labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
@@ -114,31 +160,21 @@ export const DashboardPage = () => {
         />
       </div>
       <div className="row">
-        <div className="col-12 col-sm-12 col-md-6">
-          <LineChart
-            id="linechart1"
-            labelY="Recolección"
-            labelX="Mes"
-            data={dataLine}
-          />
+        <div className="col-sm-12 col-md-6">
+          <Line options={options} data={dataLine} />
         </div>
-        <div className="col-12 col-sm-12 col-md-6">
-          <BarChart
-            id="barchart1"
-            labelY="Recolección"
-            labelX="Mes"
-            data={dataBar}
-          />
+        <div className="col-sm-12 col-md-6">
+          <Bar options={options} data={dataBar} />
         </div>
       </div>
       <div className="row">
-        <div className="col-12 col-sm-12 col-md-6">
-          <PieChart id="piechart1" type="pie" data={dataPie} />
+        <div className="col-sm-12 col-md-6">
+          <Pie data={dataPie} />
         </div>
-        <div className="col-12 col-sm-12 col-md-6">
-          <PieChart id="piechart2" type="doughnut" data={dataPie} />
+        <div className="col-sm-12 col-md-6">
+          <Pie data={dataPie} />
         </div>
-      </div>      
+      </div>
     </>
   );
 };
