@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useForm } from "../../hooks";
-import { ButtonForm, InputForm, SelectInput } from "../../components";
-import Multiselect from "multiselect-react-dropdown";
+import { ButtonForm, InputForm } from "../../components";
+import Select from "react-select";
 
 const options = [
-  { value: "0", viewValue: "Todos" },
-  { value: "1", viewValue: "Galpón A" },
-  { value: "2", viewValue: "Galpón B" },
-  { value: "3", viewValue: "Galpón C" },
-  { value: "4", viewValue: "Galpón D" },
-  { value: "5", viewValue: "Galpón E" },
+  { value: "0", label: "Todos" },
+  { value: "1", label: "Galpón A" },
+  { value: "2", label: "Galpón B" },
+  { value: "3", label: "Galpón C" },
+  { value: "4", label: "Galpón D" },
+  { value: "5", label: "Galpón E" },
 ];
 
 export const AddCost = () => {
@@ -30,6 +30,10 @@ export const AddCost = () => {
       ? setDisabledButton(false)
       : setDisabledButton(true);
   }, [sheds, parameter, amount, cost]);
+
+  const handleChangeSelect = (event) => {
+    handleChangeValue({ target: { name: "sheds", value: event.length <= 0 ? null : event } });
+  }
 
   const handleChangeValue = (event) => {
     const { target } = event;
@@ -63,17 +67,7 @@ export const AddCost = () => {
             <div className="row g-2">
               <div className="col-3">
                 <label>Galpones</label>
-                <Multiselect
-                  options={options}
-                  placeholder=""
-                  hidePlaceholder={true}
-                  selectedValues={options.value}
-                  onSelect={onSelect}
-                  onRemove={onRemove}
-                  displayValue="viewValue"
-                  showArrow={false}
-                  closeOnSelect={false}
-                />
+                  <Select onChange={handleChangeSelect} name="sheds" placeholder="Opciones" isMulti options={options} />
               </div>
               <div className="col-2">
                 <InputForm
