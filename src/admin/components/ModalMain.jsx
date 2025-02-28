@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', children }) => {
+export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', disabledBtn=false, children }) => {
   useEffect(() => {
     const modalElement = document.getElementById("mainModal");
     const backdropElement = document.createElement("div");
@@ -56,7 +56,7 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', chi
                 data-bs-dismiss="modal">
                 Cerrar
               </button>
-              <button type="button" onClick={() => onClose(true)} className="btn btn-outline-primary">
+              <button type="button" disabled={disabledBtn} onClick={() => onClose(true)} className="btn btn-outline-primary">
                 Guardar cambios
               </button>
             </div>
