@@ -34,7 +34,7 @@ export const SearchFilterHarvest = ({ onDataSearch }) => {
 
   const resetForm = () => {
     setShowSelect(false);
-    setTimeout( () => setShowSelect(true), 5);
+    setTimeout( () => setShowSelect(true));
     setFormState({});
   }
 
