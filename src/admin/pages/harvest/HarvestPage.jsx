@@ -30,13 +30,14 @@ const columns = [
   { column: "categoryExtra" },
   { column: "brokenEggs" },
   { column: "totalEggs" },
-  { column: "date" },
+  { column: "dateNow" },
   { column: "dateRegister" },
   { column: "action" },
 ];
 
 const harvest = [
   {
+    sheldId: 1,
     sheld: "Galpón A",
     categoryC: 120,
     categoryB: 90,
@@ -45,11 +46,12 @@ const harvest = [
     categoryAAA: 121,
     categoryExtra: 180,
     brokenEggs: 10,
-    totalEggs: 811,
-    date: "2025-02-13",
+    totalEggs: 821,
+    dateNow: "2025-02-13",
     dateRegister: "2025-02-13",
   },
   {
+    sheldId: 2,
     sheld: "Galpón B",
     categoryC: 120,
     categoryB: 90,
@@ -58,11 +60,12 @@ const harvest = [
     categoryAAA: 121,
     categoryExtra: 180,
     brokenEggs: 10,
-    totalEggs: 811,
-    date: "2025-02-13",
+    totalEggs: 821,
+    dateNow: "2025-02-13",
     dateRegister: "2025-02-13",
   },
   {
+    sheldId: 3,
     sheld: "Galpón C",
     categoryC: 120,
     categoryB: 90,
@@ -71,8 +74,8 @@ const harvest = [
     categoryAAA: 121,
     categoryExtra: 180,
     brokenEggs: 10,
-    totalEggs: 811,
-    date: "2025-02-13",
+    totalEggs: 821,
+    dateNow: "2025-02-13",
     dateRegister: "2025-02-13",
   },
 ];
@@ -81,6 +84,7 @@ export const HarvestPage = () => {
   const [json, setJson] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
+  const [modalData, setModalData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const sleepLoading = async() => {
@@ -88,8 +92,9 @@ export const HarvestPage = () => {
     setIsLoading(false);
   }
 
-  const handleButtonClick = (isCreate) => {
-    isCreate ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");
+  const handleButtonClick = (data, isCreate) => {
+    isCreate ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");  
+    setModalData(data);
     setShowModal(true);
   };
 
@@ -102,14 +107,19 @@ export const HarvestPage = () => {
 
     sleepLoading();
     
-    const newJson = harvest.map((dato) => ({
-      ...dato,
+    const newJson = harvest.map((data) => ({
+      ...data,
       action: (
         <>
           <ButtonForm
-            label={<i className="fa fa-eye text-primary"></i>}
+              label={<i className="fa fa-pencil text-primary"></i>}
+              className="btn-default btn-sm"
+              onBtnClick={() => handleButtonClick(data, false)}
+            />{" "}
+          <ButtonForm
+            label={<i className="fa fa-trash-can text-danger"></i>}
             className="btn-default btn-sm"
-            onBtnClick={() => handleButtonClick(false)}
+            onBtnClick={() => handleButtonClick(data, false)}
           />
         </>
       ),
@@ -132,7 +142,7 @@ export const HarvestPage = () => {
         Agregar recolección
       </button>
       <SearchFilterHarvest onDataSearch={searchInfo} />
-      {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} />)}
+      {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} data={modalData} />)}
       {isLoading && <LoadingMessage message="Cargando..." />}
       {!isLoading && (<Table
         caption="Recolección de Huevos"

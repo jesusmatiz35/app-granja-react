@@ -8,19 +8,20 @@ import {
 import { useForm } from "../../hooks";
 
 const options = [
-  { value: "1", viewValue: "Galpón A" },
-  { value: "2", viewValue: "Galpón B" },
-  { value: "3", viewValue: "Galpón C" },
-  { value: "4", viewValue: "Galpón D" },
-  { value: "5", viewValue: "Galpón E" },
+  { value: 1, viewValue: "Galpón A" },
+  { value: 2, viewValue: "Galpón B" },
+  { value: 3, viewValue: "Galpón C" },
+  { value: 4, viewValue: "Galpón D" },
+  { value: 5, viewValue: "Galpón E" },
 ];
 
-export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
+export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
   const {
     formState,
     onInputChange,
     setFormState,
-    shed,
+    sheldId,
+    sheld,
     categoryC,
     categoryB,
     categoryA,
@@ -29,7 +30,7 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
     categoryExtra,
     brokenEggs,
     dateNow,
-  } = useForm({});
+  } = useForm(data);
 
   const [totalEggs, setTotalEggs] = useState(0);
   const [disabledButton, setDisabledButton] = useState(true);
@@ -60,7 +61,7 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
   ]);
 
   useEffect(() => {
-    shed &&
+    sheld &&
     categoryC &&
     categoryB &&
     categoryA &&
@@ -72,7 +73,7 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
       ? setDisabledButton(false)
       : setDisabledButton(true);
   }, [
-    shed,
+    sheld,
     categoryC,
     categoryB,
     categoryA,
@@ -118,10 +119,10 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
         </div>
         <div className="row col-6 mb-1">
           <SelectInput
-            name="shed"
+            name="sheldId"
             onSelectChange={handleChangeValue}
             label="Galpón"
-            defaultValue={0}
+            defaultValue={sheldId}
             options={options}
           />
         </div>
@@ -130,12 +131,14 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
             type="number"
             label="Huevos C"
             name="categoryC"
+            defaultValue={categoryC}
             onInputChange={handleChangeValue}
           />
           <InputForm
             type="number"
             label="Huevos B"
             name="categoryB"
+            defaultValue={categoryB}
             onInputChange={handleChangeValue}
           />
         </div>
@@ -144,12 +147,14 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
             type="number"
             label="Huevos A"
             name="categoryA"
+            defaultValue={categoryA}
             onInputChange={handleChangeValue}
           />
           <InputForm
             type="number"
             label="Huevos AA"
             name="categoryAA"
+            defaultValue={categoryAA}
             onInputChange={handleChangeValue}
           />
         </div>
@@ -158,12 +163,14 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
             type="number"
             label="Huevos AAA"
             name="categoryAAA"
+            defaultValue={categoryAAA}
             onInputChange={handleChangeValue}
           />
           <InputForm
             type="number"
             label="Huevos Extra"
             name="categoryExtra"
+            defaultValue={categoryExtra}
             onInputChange={handleChangeValue}
           />
         </div>
@@ -172,12 +179,14 @@ export const HarvestModal = ({ onClose, title = "Modal Title" }) => {
             type="number"
             label="Huevos Rotos"
             name="brokenEggs"
+            defaultValue={brokenEggs}
             onInputChange={handleChangeValue}
           />
           <InputForm
             type="date"
             label="Fecha"
             name="dateNow"
+            defaultValue={dateNow}
             onInputChange={handleChangeValue}
           />
         </div>
