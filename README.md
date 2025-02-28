@@ -7,7 +7,7 @@ Librerias usadas:
 - [react@19](https://react.dev/reference/react)
 - [bootstrap@5.3.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [fontawesome@6.4.2](https://fontawesome.com/search?q=trash&o=r&ic=free)
-- [chartjs:4.4.7](https://www.chartjs.org/docs/4.4.7/)
+- [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)
 - [multiselect-react-dropdown](https://www.npmjs.com/package/multiselect-react-dropdown)
 
 #### Autor
