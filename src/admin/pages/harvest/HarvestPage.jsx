@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
 import { ButtonForm, LoadingMessage } from "../../components";
-import { AddHarvest } from "./AddHarvest";
+import { HarvestModal } from "./HarvestModal";
 
 const headers = [
   { title: "Galpón" },
@@ -73,7 +73,8 @@ const harvest = [
 
 export const HarvestPage = () => {
   const [json, setJson] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const sleepLoading = async() => {
@@ -81,9 +82,15 @@ export const HarvestPage = () => {
     setIsLoading(false);
   }
 
-  const handleButtonClick = (data, isDelete) => {
-    console.log({ data, isDelete});
-  }
+  const handleButtonClick = (isCreate) => {
+    isCreate ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");
+    setShowModal(true);
+  };
+
+  const handleCloseModal = (result) => {
+    console.log(result);
+    setShowModal(false);
+  };
 
   useEffect(() => {
 
@@ -94,9 +101,9 @@ export const HarvestPage = () => {
       action: (
         <>
           <ButtonForm
-            label={<i className="fa fa-trash-can text-danger"></i>}
+            label={<i className="fa fa-eye text-primary"></i>}
             className="btn-default btn-sm"
-            onBtnClick={() => handleButtonClick(dato, true)}
+            onBtnClick={() => handleButtonClick(false)}
           />
         </>
       ),
@@ -108,7 +115,13 @@ export const HarvestPage = () => {
   return (
     <>
       <Breadcrumb breadCrumb="Recolección" />
-      <AddHarvest />
+      <button
+        type="button"
+        onClick={() => handleButtonClick(true)}
+        className="btn btn-outline-info text-primary btn-sm m-1">
+        Agregar recolección
+      </button>
+      {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} />)}
       {isLoading && <LoadingMessage message="Cargando..." />}
       {!isLoading && (<Table
         caption="Recolección de Huevos"

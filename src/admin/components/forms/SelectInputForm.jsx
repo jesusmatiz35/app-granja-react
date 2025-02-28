@@ -1,4 +1,4 @@
-export const SelectInput = ({ label = 'LabelText', name='shed', className = "col-md", defaultValue = '', options = [], onSelectChange }) => {
+export const SelectInput = ({ label = 'LabelText', name='shed', className = "col-md", defaultValue = '', style={}, options = [], onSelectChange }) => {
   return (
     <div className={className}>
       <label>{label}</label>
@@ -6,9 +6,9 @@ export const SelectInput = ({ label = 'LabelText', name='shed', className = "col
         onChange={onSelectChange}
         name={name}
         className="form-select form-select-sm"
-        style={{ height: "38px" }}
+        style={{ height: "38px", ...style }}
         defaultValue={defaultValue}>
-        <option value="">Seleccione una opción</option>
+        <option value=""></option>
         {options.map(({ value, viewValue }, index) => (
           <option key={`${value}-${index}`} value={value}>
             {viewValue}

@@ -1,4 +1,4 @@
-export const InputForm = ({ className='col-md', type = 'text', label = 'Label', name = 'date', defaultValue = '', min=0, disabled=false, onInputChange }) => {
+export const InputForm = ({ className='col-md', style={}, type = 'text', label = 'Label', name = 'date', defaultValue = '', min=0, disabled=false, onInputChange }) => {
   
   return (
     <div className={className}>
@@ -9,7 +9,8 @@ export const InputForm = ({ className='col-md', type = 'text', label = 'Label', 
         min={min}
         disabled={disabled}
         defaultValue={defaultValue}
-        className="form-control"
+        className={`form-control ${className}`}
+        style={style}
         onChange={onInputChange}
       />
     </div>
