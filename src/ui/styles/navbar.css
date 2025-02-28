@@ -1,0 +1,31 @@
+.navbar {
+  background: linear-gradient(135deg, #3f6326 0%, rgb(101, 153, 64) 100%);
+  position: fixed;
+  width: 100%;
+  margin-bottom: 45px;
+  z-index: 1000;
+}
+
+.navbar-brand img {
+  vertical-align: middle;
+}
+
+.navbar-brand span {
+  vertical-align: middle;
+}
+
+.navbar-collapse {
+  /* justify-content: flex-end; */
+}
+
+.nav-item .btn {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-item .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

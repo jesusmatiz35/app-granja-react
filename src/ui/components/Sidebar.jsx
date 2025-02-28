@@ -16,37 +16,56 @@ import { menuItems } from "../../admin/helpers/menu";
 const menu = menuItems;
 
 export const Sidebar = () => {
-  const [screen, setScreen] = useState(window.screen.width);
+  const [screen, setScreen] = useState(window.innerWidth);
 
   useEffect(() => {
     const onScreenResize = () => {
-      const width = window.screen.width;
+      const width = window.innerWidth;
+      setScreen(width);
 
-      if (width <= 500) {
-        setScreen(width);
-        setTimeout(() => toggleSidebar(), 50);
+      if (width > 768) {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.remove("collapsed");
+      } else {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.add("collapsed");
       }
     };
 
     window.addEventListener("resize", onScreenResize);
 
+    // Initial check
+    onScreenResize();
+
     return () => {
       window.removeEventListener("resize", onScreenResize);
     };
-  }, [screen]);
+  }, []);
 
   const toggleSidebar = () => {
     const sidebar = document.querySelector(".sidebar");
     sidebar.classList.toggle("collapsed");
   };
 
+  const handleNavLinkClick = () => {
+    if (screen <= 768) {
+      toggleSidebar();
+    }
+  };
+
   return (
     <>
-      <div className="d-flex" style={ {zIndex: '10000'} }>
+      <div className="d-flex" style={{ zIndex: "10000" }}>
+        {/* <button
+          id="toggle-btn"
+          className="toggle-btn"
+          onClick={toggleSidebar}>
+          <i className="fas fa-bars"></i>
+        </button> */}
         <nav className="sidebar d-flex flex-column flex-shrink-0 position-fixed mt-5">
           <button
             id="toggle-btn"
-            className="toggle-btn"            
+            className="toggle-btn"
             onClick={toggleSidebar}>
             <i className="fas fa-chevron-left"></i>
           </button>
@@ -62,17 +81,18 @@ export const Sidebar = () => {
                     isActive ? "active" : ""
                   }`
                 }
-                to={item.path}>
-                <i className={`fas ${item.icon} me-3`}></i>
-                <span className="hide-on-collapse">{item.name}</span>
+                to={item.path}
+                onClick={handleNavLinkClick}>
+                <i className={`fas ${item.icon} me-3`}></i>{" "}
+                <span className="pl-3">{item.name}</span>
               </NavLink>
             ))}
           </div>
           <div className="profile-section p-4 mt-0">
             <div className="d-flex align-items-center">
-              <NavLink className="ms-3 profile-info" to="/docs">
-                <i className={`fas fa-file-pdf me-3`}></i>
-                <span className="hide-on-collapse">Documentación</span>
+              <NavLink className="ms-3 profile-info" to="/docs" onClick={handleNavLinkClick}>
+                <i className={`fas fa-file-pdf me-3`}></i>{" "}
+                <span className="pl-3">Documentación</span>
               </NavLink>
             </div>
           </div>
