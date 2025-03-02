@@ -96,7 +96,7 @@ export const UserPage = () => {
                 label="Nombre"
                 type="text"
                 name="nombre"
-                onInputChange={ () => console.log }
+                onInputChange={() => console.log}
                 className="form-group col-6"
               />
               <InputForm
@@ -111,7 +111,7 @@ export const UserPage = () => {
                 label="Correo electronico"
                 type="email"
                 name="email"
-                onInputChange={ () => console.log }
+                onInputChange={() => console.log}
                 className="form-group col-12"
               />
             </div>
@@ -120,14 +120,14 @@ export const UserPage = () => {
                 label="Contraseña"
                 type="password"
                 name="pwd"
-                onInputChange={ () => console.log }
+                onInputChange={() => console.log}
                 className="form-group col-6"
               />
               <InputForm
                 label="Confirmar contraseña"
                 type="password"
                 name="repwd"
-                onInputChange={ () => console.log }
+                onInputChange={() => console.log}
                 className="form-group col-6"
               />
             </div>
@@ -138,10 +138,10 @@ export const UserPage = () => {
       {/* Se muestra mensaje de error en caso de existir */}
       {hasError && <small className="text-danger">{error.message}</small>}
       {/* Se muestra loading mientras se cargan los datos */}
-      {isLoading && <LoadingMessage message="Cargando..." />}
-      {/* Se carga datos de la tabla */}
-      {!isLoading && (
-        <div className="card">
+      <div className="card">
+        {isLoading && <LoadingMessage message="Cargando..." />}
+        {/* Se carga datos de la tabla */}
+        {!isLoading && (
           <Table
             caption="Lista de usuarios"
             headers={headers}
@@ -150,8 +150,8 @@ export const UserPage = () => {
             data={json}
             totalItems={json.length}
           />
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
