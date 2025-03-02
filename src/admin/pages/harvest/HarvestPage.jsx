@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 import { Table } from "../../../ui/components/table";
 import { ButtonForm, LoadingMessage } from "../../components";
 import { HarvestModal } from "./HarvestModal";
-import { SearchFilterHarvest } from "./SearchFilterHarvest";
 
 const headers = [
-  { title: "Galpón" },
   { title: "C" },
   { title: "B" },
   { title: "A" },
@@ -21,7 +18,6 @@ const headers = [
 ];
 
 const columns = [
-  { column: "sheld" },
   { column: "categoryC" },
   { column: "categoryB" },
   { column: "categoryA" },
@@ -87,13 +83,15 @@ export const HarvestPage = () => {
   const [modalData, setModalData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const sleepLoading = async() => {
+  const sleepLoading = async () => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsLoading(false);
-  }
+  };
 
   const handleButtonClick = (data = {}) => {
-    (data === null) ? setModalTitle("Registrar recolección") : setModalTitle("Editar recolección");  
+    data === null
+      ? setModalTitle("Registrar recolección")
+      : setModalTitle(`Editar recolección`);
     setModalData(data);
     setShowModal(true);
   };
@@ -108,22 +106,21 @@ export const HarvestPage = () => {
   };
 
   useEffect(() => {
-
     sleepLoading();
-    
+
     const newJson = harvest.map((data) => ({
       ...data,
       action: (
         <>
           <ButtonForm
-              label={<i className="fa fa-pencil text-primary"></i>}
-              className="btn-default btn-sm"
-              onBtnClick={() => handleButtonClick(data)}
-            />{" "}
+            label={<i className="fa fa-pencil text-primary"></i>}
+            className="btn-default btn-sm"
+            onBtnClick={() => handleButtonClick(data)}
+          />{" "}
           <ButtonForm
             label={<i className="fa fa-trash-can text-danger"></i>}
             className="btn-default btn-sm"
-            onBtnClick={() => handleDeleteButton(data,)}
+            onBtnClick={() => handleDeleteButton(data)}
           />
         </>
       ),
@@ -138,24 +135,43 @@ export const HarvestPage = () => {
 
   return (
     <>
-      <Breadcrumb breadCrumb="Recolección" />
-      <button
-        type="button"
-        onClick={() => handleButtonClick()}
-        className="btn btn-outline-info text-primary btn-sm m-1">
-        Agregar recolección
-      </button>
-      <SearchFilterHarvest onDataSearch={searchInfo} />
-      {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} data={modalData} />)}
-      {isLoading && <LoadingMessage message="Cargando..." />}
-      {!isLoading && (<Table
-        caption="Recolección de Huevos"
-        headers={headers}
-        columns={columns}
-        pageSize={10}
-        data={json}
-        totalItems={json.length}
-      />)}
+      <div className="card mb-2">
+        <div className="card-header d-flex justify-content-between align-items-center p-2">
+          <small>Datos de recolección</small>
+          <div
+            className="d-flex align-items-center"
+            style={{ textAlign: "right" }}>
+            <ButtonForm
+              label="Gráfico"
+              type="button"
+              disabled={false}
+              onBtnClick={() => console.log("...")}
+              icon="fa-solid fa-chart-line"
+              className="btn-outline-info btn-sm"
+            />
+            <span>&nbsp;</span>
+            <ButtonForm
+              label="Registrar"
+              type="button"
+              disabled={false}
+              onBtnClick={() => handleButtonClick(null)}
+              icon="fa-solid fa-plus"
+              className="btn-outline-success btn-sm"
+            />
+          </div>
+        </div>
+        {showModal && (<HarvestModal onClose={handleCloseModal} title={modalTitle} data={modalData} />) }
+        {isLoading && <LoadingMessage message="Cargando..." />}
+        {!isLoading && (
+          <Table
+            headers={headers}
+            columns={columns}
+            pageSize={5}
+            data={json}
+            totalItems={json.length}
+          />
+        )}
+      </div>
     </>
   );
 };

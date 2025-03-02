@@ -32,8 +32,10 @@ export const AddCost = () => {
   }, [sheds, parameter, amount, cost]);
 
   const handleChangeSelect = (event) => {
-    handleChangeValue({ target: { name: "sheds", value: event.length <= 0 ? null : event } });
-  }
+    handleChangeValue({
+      target: { name: "sheds", value: event.length <= 0 ? null : event },
+    });
+  };
 
   const handleChangeValue = (event) => {
     const { target } = event;
@@ -58,64 +60,55 @@ export const AddCost = () => {
 
   return (
     <>
-      <div className="card shadow-sm mb-2 pb-2">
-        <div className="card-header">
-          <small>Registrar costo</small>
-        </div>
-        <form action="#">
-          <div className="card-body py-0">
-            <div className="row g-2">
-              <div className="col-3">
-                <label>Galpones</label>
-                  <Select onChange={handleChangeSelect} name="sheds" placeholder="Opciones" isMulti options={options} />
-              </div>
-              <div className="col-2">
-                <InputForm
-                  type="text"
-                  label="Parametro"
-                  name="parameter"
-                  onInputChange={handleChangeValue}
-                />
-              </div>
-              <div className="col-1">
-                <InputForm
-                  type="number"
-                  label="Cantidad"
-                  name="amount"
-                  onInputChange={handleChangeValue}
-                />
-              </div>
-              <div className="col-1">
-                <InputForm
-                  type="number"
-                  label="Costo"
-                  name="cost"
-                  onInputChange={handleChangeValue}
-                />
-              </div>
+      <form action="#">
+        <div className="card-body py-0">
+          <div className="row g-2">
+            <div className="col-2">
+              <InputForm
+                type="text"
+                label="Parametro"
+                name="parameter"
+                onInputChange={handleChangeValue}
+              />
+            </div>
+            <div className="col-1">
+              <InputForm
+                type="number"
+                label="Cantidad"
+                name="amount"
+                onInputChange={handleChangeValue}
+              />
+            </div>
+            <div className="col-1">
+              <InputForm
+                type="number"
+                label="Costo"
+                name="cost"
+                onInputChange={handleChangeValue}
+              />
             </div>
           </div>
+        </div>
 
-          <div className="text-center mt-3 mb-2">
-            <ButtonForm
-              label="Agregar"
-              type="button"
-              disabled={disabledButton}
-              onBtnClick={handleAddCost}
-              icon="fa-solid fa-plus"
-              className="btn-outline-success btn-sm"
-            />{" "}
-            <ButtonForm
-              label="Limpiar"
-              type="reset"
-              disabled={disabledButton}
-              onBtnClick={handleResetCost}
-              icon="fa-solid fa-delete-left"
-              className="btn-outline-danger btn-sm"
-            />
-          </div>
-        </form>
-      </div>
+        <div className="text-center mt-3">
+          <ButtonForm
+            label="Agregar"
+            type="button"
+            disabled={disabledButton}
+            onBtnClick={handleAddCost}
+            icon="fa-solid fa-plus"
+            className="btn-outline-success btn-sm"
+          />{" "}
+          <ButtonForm
+            label="Limpiar"
+            type="reset"
+            disabled={disabledButton}
+            onBtnClick={handleResetCost}
+            icon="fa-solid fa-delete-left"
+            className="btn-outline-danger btn-sm"
+          />
+        </div>
+      </form>
     </>
   );
 };

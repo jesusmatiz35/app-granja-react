@@ -60,7 +60,6 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
   ]);
 
   useEffect(() => {
-    sheld &&
     categoryC &&
     categoryB &&
     categoryA &&
@@ -72,7 +71,6 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
       ? setDisabledButton(false)
       : setDisabledButton(true);
   }, [
-    sheld,
     categoryC,
     categoryB,
     categoryA,
@@ -103,6 +101,9 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
       modalTitle={title}
       disabledBtn={disabledButton}>
       <CustomForm>
+        <div className="text-center my-0 py-0">
+          <h2>{data?.sheld}</h2>
+        </div>
         <div
           className="col-12 text-center py-0 mb-2"
           style={{
@@ -115,15 +116,6 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
             style={{ marginTop: "-3px" }}>
             <p className="m-1 text-success">{totalEggs | 0}</p>
           </div>
-        </div>
-        <div className="row col-6 mb-1">
-          <SelectInput
-            name="sheld"
-            onSelectChange={handleChangeValue}
-            label="Galpón"
-            defaultValue={sheldId}
-            options={options}
-          />
         </div>
         <div className="row mb-1">
           <InputForm

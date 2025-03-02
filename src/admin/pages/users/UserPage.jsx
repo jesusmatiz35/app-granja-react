@@ -141,14 +141,16 @@ export const UserPage = () => {
       {isLoading && <LoadingMessage message="Cargando..." />}
       {/* Se carga datos de la tabla */}
       {!isLoading && (
-        <Table
-          caption="Lista de usuarios"
-          headers={headers}
-          columns={columns}
-          pageSize={10}
-          data={json}
-          totalItems={json.length}
-        />
+        <div className="card">
+          <Table
+            caption="Lista de usuarios"
+            headers={headers}
+            columns={columns}
+            pageSize={10}
+            data={json}
+            totalItems={json.length}
+          />
+        </div>
       )}
     </>
   );

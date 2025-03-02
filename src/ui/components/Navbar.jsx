@@ -12,7 +12,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-sm p-2">
       <Link className="navbar-brand text-warning" to="/dashboard">
-        <img src="src/assets/img/granja.png" width="35px" /> 
+        <img src="/src/assets/img/granja.png" width="35px" /> 
         <span>Mi Granja App</span>
       </Link>
 

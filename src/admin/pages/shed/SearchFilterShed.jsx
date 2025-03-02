@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { useForm } from "../../hooks";
 import { SelectInput } from "../../components/forms/SelectInputForm";
-import { TypesShed } from "../../../commons/TypesShed";
-import { ButtonForm, InputForm } from "../../components/forms";
+import { ButtonForm } from "../../components/forms";
 
-const optionsShed = TypesShed;
+const options = [
+  { value: 1, viewValue: "Galpón A" },
+  { value: 2, viewValue: "Galpón B" },
+  { value: 3, viewValue: "Galpón C" },
+  { value: 4, viewValue: "Galpón D" },
+  { value: 5, viewValue: "Galpón E" },
+];
 
 export const SearchFilterShed = ({ onDataSearch }) => {
-  const { formState, onInputChange, setFormState, shed, date_star, date_end } =
+  const { formState, onInputChange, setFormState, shed } =
     useForm({});
 
   const [disableBtn, setDisableBtn] = useState(true);
@@ -17,10 +22,10 @@ export const SearchFilterShed = ({ onDataSearch }) => {
   };
 
   useEffect(() => {
-    shed?.length > 0 || date_star?.length > 0 || date_end?.length > 0
+    shed?.length > 0
       ? setDisableBtn(false)
       : setDisableBtn(true);
-  }, [shed, date_star, date_end]);
+  }, [shed]);
 
   return (
     <>
@@ -31,24 +36,14 @@ export const SearchFilterShed = ({ onDataSearch }) => {
         <form action="#">
           <div className="card-body py-0">
             <div className="row g-2">
-              <SelectInput
-                onSelectChange={onInputChange}
-                label="Galpón"
-                defaultValue={0}
-                options={optionsShed}
-              />
-              <InputForm
-                type="date"
-                label="Fecha Inicio"
-                name="date_star"
-                onInputChange={onInputChange}
-              />
-              <InputForm
-                type="date"
-                label="Fecha Fin"
-                name="date_end"
-                onInputChange={onInputChange}
-              />
+              <div className="col-2">
+                <SelectInput
+                  onSelectChange={onInputChange}
+                  label="Galpón"
+                  defaultValue={-1}
+                  options={options}
+                />
+              </div>
             </div>
             <div className="text-center mt-3 mb-2">
               <ButtonForm

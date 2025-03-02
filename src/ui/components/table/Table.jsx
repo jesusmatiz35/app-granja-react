@@ -45,7 +45,7 @@ export const Table = ({
 
   return (
     <>
-      <div className="table-responsive shadow-sm card p-2">
+      <div className="table-responsive p-2">
         <div className="d-flex justify-content-between align-items-center mb-2">
           {caption.length > 0 && (
             <span className="caption-top mb-0">
@@ -63,6 +63,7 @@ export const Table = ({
               name="show-pages"
               className="form-select form-select-sm"
               style={{ width: "65px" }}>
+              <option value={5}>5</option>
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>

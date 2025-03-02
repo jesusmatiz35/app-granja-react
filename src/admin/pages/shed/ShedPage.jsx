@@ -12,6 +12,7 @@ import {
 import { LineGenetic } from "../../../commons/LineGenetic";
 import { TypesShed } from "../../../commons/TypesShed";
 import { SearchFilterShed } from "./SearchFilterShed";
+import { useNavigate } from "react-router";
 
 const headers = [
   { title: "#" },
@@ -52,8 +53,15 @@ export const ShedPage = () => {
   };
 
   const handleDeleteShed = (id) => {
-    console.log(id);
+    console.log(id);    
   };
+
+  const navigate = useNavigate();
+
+  const handleNavigateDetail = (id) => {
+    console.log(id);
+    navigate(`/shed/detail/${id}`);
+  }
 
   useEffect(() => {
     if (!isLoading) {
@@ -63,7 +71,7 @@ export const ShedPage = () => {
           <>
             <button
               type="button"
-              onClick={() => handleButtonClick(false)}
+              onClick={() => handleNavigateDetail(dato.id)}
               className="btn btn-default btn-sm">
               <i className="fa fa-eye text-primary"></i>
             </button>{" "}
@@ -92,7 +100,7 @@ export const ShedPage = () => {
         type="button"
         onClick={() => handleButtonClick(true)}
         className="btn btn-outline-info text-primary btn-sm m-1">
-        Agregar galpón
+        <i className="fa fa-solid fa-plus"></i> Agregar galpón
       </button>
       {showModal && (
         <ModalMain modalTitle={modalTitle} onClose={handleCloseModal}>
