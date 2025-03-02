@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Table } from "../../../ui/components/table";
 import { ButtonForm, LoadingMessage } from "../../components";
+import { CostModal } from "./CostModal";
 
 const headers = [
   { title: "Descripción" },
@@ -29,11 +30,20 @@ const data = [
 
 export const CostPage = () => {
   const [json, setJson] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleButtonClick = (d) => {
     console.log({ borrar: 'borrar', ...d });
+  };
+
+  const handleAddCost = () => {
+    setShowModal(true);
+  }
+
+  const handleCloseModal = (result) => {
+    console.log(result);
+    setShowModal(false);
   };
 
   const sleepLoading = async () => {
@@ -66,16 +76,26 @@ export const CostPage = () => {
         <div className="card-header d-flex justify-content-between align-items-center p-2">
           <small>Costos</small>
           <div className="d-flex align-items-center" style={{textAlign: 'right'}}>
-            <ButtonForm
-              label="Agregar"
+          <ButtonForm
+              label=""
               type="button"
-              disabled={false}
-              onBtnClick={() => console.log("...")}
+              disabled={isLoading}
+              onBtnClick={() => console.log("Mostrar costo del huevo")}
+              icon="fa-solid fa-egg text-warning"
+              className="btn-outline-info btn-sm"
+            />
+            <span>&nbsp;</span>
+            <ButtonForm
+              label=""
+              type="button"
+              disabled={isLoading}
+              onBtnClick={handleAddCost}
               icon="fa-solid fa-plus"
               className="btn-outline-success btn-sm"
             />
           </div>
         </div>
+        {showModal && <CostModal title="Agregar Costo" onClose={handleCloseModal} />}
         {isLoading && <LoadingMessage message="Cargando..." />}
         {!isLoading && (
           <Table

@@ -60,7 +60,7 @@ export const ShedPage = () => {
 
   const handleNavigateDetail = (id) => {
     console.log(id);
-    navigate(`/shed/detail/${id}`);
+    navigate(`/sheds/detail/${id}`);
   }
 
   useEffect(() => {

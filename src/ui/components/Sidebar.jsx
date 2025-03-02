@@ -106,7 +106,7 @@ export const Sidebar = () => {
               <Route path="settings" element={<SettingPage />} />
               <Route path="reports" element={<ReportPage />} />
               <Route path="docs" element={<DocPage />} />
-              <Route path="shed/detail/:id" element={<ShedDetails /> } />
+              <Route path="sheds/detail/:id" element={<ShedDetails /> } />
             </Routes>
           </div>
         </main>

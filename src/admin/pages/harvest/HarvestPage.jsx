@@ -139,18 +139,18 @@ export const HarvestPage = () => {
             className="d-flex align-items-center"
             style={{ textAlign: "right" }}>
             <ButtonForm
-              label="Gráfico"
+              label=""
               type="button"
-              disabled={false}
+              disabled={isLoading}
               onBtnClick={() => console.log("...")}
               icon="fa-solid fa-chart-line"
               className="btn-outline-info btn-sm"
             />
             <span>&nbsp;</span>
             <ButtonForm
-              label="Registrar"
+              label=""
               type="button"
-              disabled={false}
+              disabled={isLoading}
               onBtnClick={() => handleButtonClick(null)}
               icon="fa-solid fa-plus"
               className="btn-outline-success btn-sm"
