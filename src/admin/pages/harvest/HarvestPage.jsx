@@ -33,8 +33,7 @@ const columns = [
 
 const harvest = [
   {
-    sheldId: 1,
-    sheld: "Galpón A",
+    hasvestId: 1,
     categoryC: 120,
     categoryB: 90,
     categoryA: 150,
@@ -47,8 +46,7 @@ const harvest = [
     dateRegister: "2025-02-13",
   },
   {
-    sheldId: 2,
-    sheld: "Galpón B",
+    hasvestId: 2,
     categoryC: 120,
     categoryB: 90,
     categoryA: 150,
@@ -61,8 +59,7 @@ const harvest = [
     dateRegister: "2025-02-13",
   },
   {
-    sheldId: 3,
-    sheld: "Galpón C",
+    hasvestId: 3,
     categoryC: 120,
     categoryB: 90,
     categoryA: 150,
@@ -92,12 +89,12 @@ export const HarvestPage = () => {
     data === null
       ? setModalTitle("Registrar recolección")
       : setModalTitle(`Editar recolección`);
-    setModalData(data);
+    setModalData({ ...data, sheld: 'Galpón X' });
     setShowModal(true);
   };
 
   const handleDeleteButton = (data) => {
-    console.log(`Eliminar: ${data.sheldId}`);
+    console.log(`Eliminar: ${data.hasvestId}`);
   };
 
   const handleCloseModal = (result) => {
