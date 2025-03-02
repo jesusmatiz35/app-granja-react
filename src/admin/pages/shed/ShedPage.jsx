@@ -143,17 +143,19 @@ export const ShedPage = () => {
         </ModalMain>
       )}
       <SearchFilterShed onDataSearch={searchInfo} />
-      {isLoading && <LoadingMessage message="Cargando..." />}
-      {!isLoading && (
-        <Table
-          caption="Galpones"
-          headers={headers}
-          columns={columns}
-          pageSize={10}
-          data={json}
-          totalItems={json.length}
-        />
-      )}
+      <div className="card">
+        {isLoading && <LoadingMessage message="Cargando..." />}
+        {!isLoading && (
+          <Table
+            caption="Galpones"
+            headers={headers}
+            columns={columns}
+            pageSize={10}
+            data={json}
+            totalItems={json.length}
+          />
+        )}
+      </div>
     </>
   );
 };
