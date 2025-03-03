@@ -134,7 +134,7 @@ export const HarvestPage = () => {
     <>
       <div className="card mb-2">
         <div className="card-header d-flex justify-content-between align-items-center p-2">
-          <small>Datos de recolección</small>
+          <small>Recolección</small>
           <div
             className="d-flex align-items-center"
             style={{ textAlign: "right" }}>
