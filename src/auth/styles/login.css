@@ -15,9 +15,17 @@
   background: linear-gradient(135deg, #3f6326 0%,rgb(101, 153, 64) 100%);
   column-gap: 30px;
 }
-.form-custom {
+.form-custom.login {
   position: absolute;
   max-width: 430px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 6px;
+  background: #fff;
+}
+.form-custom.signup {
+  position: absolute;
+  max-width: 700px;
   width: 100%;
   padding: 30px;
   border-radius: 6px;
@@ -125,5 +133,11 @@ form {
 @media screen and (max-width: 400px) {
   .form {
     padding: 20px 10px;
+  }
+}
+/* Aplica paddingTop solo en dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .container-form {
+    padding-top: 60%;
   }
 }
