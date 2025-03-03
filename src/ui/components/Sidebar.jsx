@@ -13,6 +13,9 @@ import {
 } from "../../admin/pages";
 import { menuItems } from "../../admin/helpers/menu";
 import { ShedDetails } from "../../admin/pages/shed/components/ShedDetails";
+import { ClientPage } from "../../admin/pages/clients/ClientPage";
+import { SalesPage } from "../../admin/pages/sales/SalesPage";
+import { CommunityPage } from "../../admin/pages/community/COmmunityPage";
 
 const menu = menuItems;
 
@@ -70,7 +73,7 @@ export const Sidebar = () => {
           <div className="nav flex-column">
             {menu.map((item) => (
               <NavLink
-                key={item.id}
+                key={item.path}
                 className={({ isActive }) =>
                   `sidebar-link text-decoration-none p-3 ${
                     isActive ? "active" : ""
@@ -104,6 +107,9 @@ export const Sidebar = () => {
               <Route path="harvest" element={<HarvestPage />} />
               <Route path="costs" element={<CostPage />} />
               <Route path="settings" element={<SettingPage />} />
+              <Route path="sales" element={<SalesPage />} />
+              <Route path="customers" element={<ClientPage />} />
+              <Route path="community" element={<CommunityPage />} />
               <Route path="reports" element={<ReportPage />} />
               <Route path="docs" element={<DocPage />} />
               <Route path="sheds/detail/:id" element={<ShedDetails /> } />
