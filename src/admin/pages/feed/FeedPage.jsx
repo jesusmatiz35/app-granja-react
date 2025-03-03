@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { ButtonForm, LoadingMessage } from "../../components";
 import { HarvestModal } from "../harvest/HarvestModal";
 import { Table } from "../../../ui/components/table";
+import { FeedModal } from "./FeedModal";
 
 const headers = [
-  { title: "Cantidad (kls)" },
+  { title: "Cantidad (kgs)" },
   { title: "Fecha de consumo" },
   { title: "Fecha de registro" },
   { title: "Acción" },
@@ -57,15 +58,13 @@ export const FeedPage = () => {
   };
 
   const handleButtonClick = (data = {}) => {
-    data === null
-      ? setModalTitle("Registrar recolección")
-      : setModalTitle(`Editar recolección`);
-    setModalData({ ...data, sheld: "Galpón X" });
+    setModalTitle("Registrar consumo")
+    setModalData(data);
     setShowModal(true);
   };
 
   const handleDeleteButton = (data) => {
-    console.log(`Eliminar: ${data}`);
+    console.log(`Eliminar: ${data.feed_id}`);
   };
 
   const handleCloseModal = (result) => {
@@ -111,7 +110,7 @@ export const FeedPage = () => {
         </div>
       </div>
       {showModal && (
-        <HarvestModal
+        <FeedModal
           onClose={handleCloseModal}
           title={modalTitle}
           data={modalData}
