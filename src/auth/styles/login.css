@@ -138,6 +138,6 @@ form {
 /* Aplica paddingTop solo en dispositivos móviles */
 @media screen and (max-width: 768px) {
   .container-form {
-    padding-top: 60%;
+    padding-top: 43%;
   }
 }
