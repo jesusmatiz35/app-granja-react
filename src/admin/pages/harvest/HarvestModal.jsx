@@ -3,7 +3,6 @@ import {
   CustomForm,
   InputForm,
   ModalMain,
-  SelectInput,
 } from "../../components";
 import { useForm } from "../../hooks";
 
@@ -14,6 +13,8 @@ const options = [
   { value: 4, viewValue: "Galpón D" },
   { value: 5, viewValue: "Galpón E" },
 ];
+
+const today = new Date().toISOString().split("T")[0];
 
 export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
   const {
@@ -29,7 +30,7 @@ export const HarvestModal = ({ onClose, title = "Modal Title", data={} }) => {
     categoryExtra,
     brokenEggs,
     dateNow,
-  } = useForm(data);
+  } = useForm({ ...data, dateNow: today });
 
   const [totalEggs, setTotalEggs] = useState(0);
   const [disabledButton, setDisabledButton] = useState(true);
