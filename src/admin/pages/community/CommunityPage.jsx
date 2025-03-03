@@ -1,6 +1,10 @@
+import { Breadcrumb } from "../../../ui/components/Breadcrumb"
 
 export const CommunityPage = () => {
   return (
-    <h1>CommunityPage</h1>
+    <>
+      <Breadcrumb breadCrumb="Comunidad" />
+      <h1>CommunityPage</h1>
+    </>
   )
 }

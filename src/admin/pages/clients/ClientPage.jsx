@@ -1,6 +1,10 @@
+import { Breadcrumb } from "../../../ui/components/Breadcrumb";
 
 export const ClientPage = () => {
   return (
-    <h1>ClientPage</h1>
-  )
-}
+    <>
+      <Breadcrumb breadCrumb="Clientes" />
+      <h1>ClientPage</h1>
+    </>
+  );
+};
