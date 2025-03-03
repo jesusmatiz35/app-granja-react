@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', disabledBtn=false, children }) => {
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
     const modalElement = document.getElementById("mainModal");
     const backdropElement = document.createElement("div");
@@ -12,6 +14,7 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', dis
       setTimeout(() => {
         modalElement.classList.add("show");
         backdropElement.classList.add("show");
+        setShow(true);
       }, 150);
     }
 
@@ -29,6 +32,21 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', dis
     };
   }, []);
 
+  const handleClose = (result) => {
+    const modalElement = document.getElementById("mainModal");
+    const backdropElement = document.querySelector(".modal-backdrop");
+
+    if (modalElement && backdropElement) {
+      modalElement.classList.remove("show");
+      backdropElement.classList.remove("show");
+      setTimeout(() => {
+        onClose(result);
+      }, 150);
+    } else {
+      onClose(result);
+    }
+  };
+
   return (
     <>
       <div
@@ -45,18 +63,18 @@ export const ModalMain = ({ onClose, modalTitle='Modal Title', modalSize='', dis
               <button
                 type="button"
                 className="btn-close"
-                onClick={() => onClose(false)}></button>
+                onClick={() => handleClose(false)}></button>
             </div>
             <div className="modal-body" style={{ marginTop: '-25px' }}>{ children }</div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-outline-secondary"
-                onClick={() => onClose(false)}
+                onClick={() => handleClose(false)}
                 data-bs-dismiss="modal">
                 Cerrar
               </button>
-              <button type="button" disabled={disabledBtn} onClick={() => onClose(true)} className="btn btn-outline-primary">
+              <button type="button" disabled={disabledBtn} onClick={() => handleClose(true)} className="btn btn-outline-primary">
                 Guardar cambios
               </button>
             </div>
