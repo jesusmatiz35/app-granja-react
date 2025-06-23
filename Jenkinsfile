@@ -6,6 +6,11 @@ pipeline {
     }
 
     stages {
+        stage('Install Sonar Scanner') {
+            steps {
+                sh 'npm install -g sonar-scanner'
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 echo 'Starting SonarQube analysis...'
